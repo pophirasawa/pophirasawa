@@ -129,11 +129,11 @@ cdn:
 
 # Post info settings
 # ---------------
-avatar:
+avatar: '/HTT.jpg'
 
-top_img: https://images.cnblogs.com/cnblogs_com/pophirasawa/1765959/o_200901120121%E5%91%86%E5%94%AF.jpg
+top_img: '/yui.jpg'
 
-top_img_height: 60 # best range: 60 - 100
+top_img_height: 100 # best range: 60 - 100
 
 post_meta:
   date_type: created # created or updated
