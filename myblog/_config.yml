@@ -3,12 +3,14 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: PopHirasawa
+subtitle: 循此苦旅，直抵群星。
 description: ''
 keywords:
-author: John Doe
-language: en
+author: pophirasawa
+language:
+  - zh-CN
+  - en
 timezone: ''
 
 # URL
@@ -98,7 +100,20 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: melody
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: ''
+deploy: 
+  type: 
+
+
+
+
+
+
+
+
+
+
+
