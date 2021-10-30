@@ -3,6 +3,7 @@
 # Notice: color value must in double quotes like "#000" or may cause error!
 # ---------------
 # theme_color:
+
 #   enable: true
 #   main: "#49B1F5"
 #   paginator: "#00C4B6"
@@ -130,7 +131,7 @@ cdn:
 # ---------------
 avatar:
 
-top_img: true # false or url of img
+top_img: https://images.cnblogs.com/cnblogs_com/pophirasawa/1765959/o_200901120121%E5%91%86%E5%94%AF.jpg
 
 top_img_height: 60 # best range: 60 - 100
 
@@ -296,10 +297,10 @@ canvas_ribbon:
 # Name: url
 
 # Follow Me Button
-# follow:
-#   enable: true
-#   url: ''
-#   text: ''
+follow:
+   enable: true
+   url: 'https://github.com/pophirasawa'
+   text: '也许是GitHub'
 
 # controls the sidebar showing or hidden in different pages
 sidebar_display: all # all/index/post/index-none/post-none/hidden
