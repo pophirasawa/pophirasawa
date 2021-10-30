@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>PopHirasawa</title>
+  
+  <subtitle>循此苦旅，直抵群星。</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-10-29T11:42:18.581Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>pophirasawa</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EXGCD</title>
+    <link href="http://example.com/2021/10/30/01%E6%88%96%E8%AE%B8%E6%98%AF%E7%AE%97%E6%B3%95/%E7%B1%BB&amp;%E6%8B%93%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/"/>
+    <id>http://example.com/2021/10/30/01%E6%88%96%E8%AE%B8%E6%98%AF%E7%AE%97%E6%B3%95/%E7%B1%BB&amp;%E6%8B%93%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/</id>
+    <published>2021-10-30T02:09:35.592Z</published>
+    <updated>2021-10-29T11:42:18.581Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="EXGCD"><a href="#EXGCD" class="headerlink" title="EXGCD"></a>EXGCD</h5><p>用于解形如ax+by=gcd（a，b）方程的通解</p><span id="more"></span><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y,<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">1</span>;</span><br><span class="line">        y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">exgcd</span>(x,y,b,a%b);</span><br><span class="line">    <span class="keyword">int</span> t=x;</span><br><span class="line">    x=y;</span><br><span class="line">    y=t-a/b*y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>也可以解出ax+by=c  gcd（a，b）|c的解</p><p>上方参数还是gcd（a，b） 解出后x2=x*c/gcd（a，b）     y2=y*c/gcd（a，b）</p><p>通解为：</p><p>{(x, y) | x = x2 + k * b / gcd(a, b)， y = y2 - k * a / gcd(a, b), k ∈ z}</p><p> 特别的 gcd（a，b）等于1时</p><p>相当于求ax=1（modb） 为a在b下的逆元（不用b是质数） 解出x后用 x=（x%b+b）%b求出在0-b范围内的x即为逆元</p><h5 id="类欧几里得"><a href="#类欧几里得" class="headerlink" title="类欧几里得"></a>类欧几里得</h5><p>当我们要计算形如<br>$$<br>        \sum_{i=0}^n\lfloor \frac{ai+b}{c}\rfloor<br>$$<br>且a，b&gt;=0,c&gt;0时<br>可以使用类欧算法。</p><p>首先有以下公式<br>$$ \lceil \frac{a}{b}\rceil = \lfloor \frac{a+b-1}{b}\rfloor$$<br>$$ \lfloor\frac{a}{b}\rfloor = \lceil \frac{a-b+1}{b}\rceil$$<br>挺容易推的：关于1式，如果 a % b != 0,那么右边就会比左边大1，2式原理相同。</p><p>然后开始推（？<br>我们令<br>$$ F(a,b,c,n)=\sum_{i=0}^n\lfloor \frac{ai+b}{c}\rfloor$$<br>1.<br>$${a}\geq{c}\Rightarrow\sum_{i=0}^n\lfloor \frac{ai+b}{c}\rfloor=\sum_{i=0}^n(\lfloor \frac{a%c\times i+b}{c}\rfloor+\lfloor\frac{a}{c}\rfloor i)=\sum_{i=0}^n\lfloor \frac{a%c\times i+b}{c}\rfloor+\lfloor\frac{a}{c}\rfloor\frac{n\times (n+1)}{2}$$<br>2.<br>$${b}\geq{c}\Rightarrow\sum_{i=0}^n\lfloor \frac{ai+b}{c}\rfloor=\sum_{i=0}^n\lfloor \frac{a i+b% c}{c}\rfloor+\lfloor\frac{b}{c}\rfloor(n+1) $$<br>因此<br>$${a}\geq{c}||{b}\geq{c}\Rightarrow\sum_{i=0}^n\lfloor \frac{ai+b}{c}\rfloor=\sum_{i=0}^n\lfloor \frac{(a%c) i+b% c}{c}\rfloor+\lfloor\frac{b}{c}\rfloor(n+1)+\lfloor\frac{a}{c}\rfloor\frac{n\times (n+1)}{2}$$<br>$$\Rightarrow F(a,b,c,n) = F(a%c,b%c,c,n)++\lfloor\frac{b}{c}\rfloor(n+1)+\lfloor\frac{a}{c}\rfloor\frac{n\times (n+1)}{2}$$<br>之后只要解决$a \lt c &amp;&amp; b\lt c$的情况就好了（？</p><p>由<br>$$<br>\sum_{i=0}^n\lfloor \frac{ai+b}{c}\rfloor<br>=\sum_{i=0}^n\sum_{j=1}^{\lfloor \frac{ai+b}{c}\rfloor}1<br>=\sum_{i=0}^n\sum_{j=1}^{\lfloor \frac{an+b}{c}\rfloor}[{j\leq \lfloor \frac{ai+b}{c}\rfloor}]<br>$$<br>交换求和顺序（<br>$$<br>\Rightarrow \sum_{j=1}^{\lfloor \frac{an+b}{c}\rfloor}\sum_{i=0}^n[{j\leq \lfloor \frac{ai+b}{c}\rfloor}]<br>$$<br>又有<br>$$<br>\lfloor \frac{a}{b} \rfloor \geq c \Leftrightarrow a\geq bc<br>$$<br>$$<br>\lceil \frac{a}{b} \rceil \leq c \Leftrightarrow a\leq bc<br>$$<br>因此<br>$$<br>=\sum_{j=1}^{\lfloor \frac{an+b}{c}\rfloor}\sum_{i=0}^n[jc\leq {ai+b}]<br>=\sum_{j=1}^{\lfloor \frac{an+b}{c}\rfloor}\sum_{i=0}^n[\lceil \frac{jc-b}{a} \rceil \leq i]<br>=\sum_{j=1}^{\lfloor \frac{an+b}{c}\rfloor}[n+1-\lceil \frac{jc-b}{a} \rceil]<br>$$<br>$$<br>=\sum_{j=1}^{\lfloor \frac{an+b}{c}\rfloor}[n+1-\lfloor \frac{jc-b+a-1}{a} \rfloor]<br>$$<br>$$<br>=n\lfloor \frac{an+b}{c}\rfloor-\sum_{j=1}^{\lfloor \frac{an+b}{c}\rfloor}[\lfloor \frac{jc-b+a-1}{a} \rfloor-1]<br>=n\lfloor \frac{an+b}{c}\rfloor-\sum_{j=0}^{\lfloor \frac{an+b}{c}\rfloor-1}[\lfloor \frac{(j+1)c-b-1}{a} \rfloor]<br>$$<br>因此我们有$a,b\lt c$时<br>$$<br>F(a,b,c,n)=n\lfloor \frac{an+b}{c}\rfloor-F(c,-1-b+c,a,\lfloor \frac{an+b}{c}\rfloor-1)<br>$$<br>然后就 可以递归了 终止条件a=0</p><p>以下代码</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">exgcd</span><span class="params">(ll a, ll b, ll c, ll n)</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(a==<span class="number">0</span>) <span class="keyword">return</span> (n+<span class="number">1</span>)*(b/c);</span><br><span class="line">      <span class="keyword">if</span>(a&gt;=c||b&gt;=c) <span class="keyword">return</span> <span class="built_in">exgcd</span>(a%c, b%c, c, n) + <span class="built_in">floor</span>(a/c)*n*(n+<span class="number">1</span>)/<span class="number">2</span> + <span class="built_in">floor</span>(b/c)*(n+<span class="number">1</span>);</span><br><span class="line">      ll temp = (a*n+b)/c;</span><br><span class="line">      <span class="keyword">return</span> n*temp - <span class="built_in">exgcd</span>(c, c-b<span class="number">-1</span>, a, temp<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h5 id=&quot;EXGCD&quot;&gt;&lt;a href=&quot;#EXGCD&quot; class=&quot;headerlink&quot; title=&quot;EXGCD&quot;&gt;&lt;/a&gt;EXGCD&lt;/h5&gt;&lt;p&gt;用于解形如ax+by=gcd（a，b）方程的通解&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数论" scheme="http://example.com/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello?</title>
+    <link href="http://example.com/2021/10/30/00%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD%E4%BB%AC/0X00/"/>
+    <id>http://example.com/2021/10/30/00%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD%E4%BB%AC/0X00/</id>
+    <published>2021-10-30T02:09:35.568Z</published>
+    <updated>2021-10-29T11:29:12.678Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里以后也许会有一些胡言乱语…</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这里以后也许会有一些胡言乱语…&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="胡言乱语们" scheme="http://example.com/tags/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD%E4%BB%AC/"/>
+    
+  </entry>
+  
+</feed>
