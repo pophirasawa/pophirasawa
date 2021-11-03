@@ -242,6 +242,7 @@ valine:
    lang: zh-cn # i18n: zh-cn/en
    placeholder: 细说 # valine comment input placeholder(like: Please leave your footprints )
    guest_info: nick,mail,link 
+   severURLs: https://pophirasawa.pages.dev/
 
 # vssue:
   # enable: false # Set to true to enable
