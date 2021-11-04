@@ -294,8 +294,13 @@ canvas_ribbon:
 
 # Sidebar Settings
 # ---------------
-# links_title: Links
-# links:
+links_title: My Friends
+links:
+  诺诺诺诺诺诺诺宝's Blog: https://jnn.icu/
+  Mushroom's Blog: https://mushroom323.github.io/
+  何夜舞月's Blog: https://heyewuyue1.github.io/
+  茯苓's Blog: https://ibukifalling.github.io/
+  Unbrella's Blog: https://fohunbrella.github.io/
 # Name: url
 
 # Follow Me Button
