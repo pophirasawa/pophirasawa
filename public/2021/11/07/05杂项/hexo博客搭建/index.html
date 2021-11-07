@@ -59,7 +59,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <p>他应该会说</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi XXX! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
-<hr>
+<hr />
 <h1 id="其次是开始部署的其次"><a class="markdownIt-Anchor" href="#其次是开始部署的其次"></a> 其次是开始部署的其次</h1>
 <blockquote>
 <p>这里也有两种选择捏，顺带一提俺是部署到Cloudflare pages上边了</p>
@@ -76,7 +76,7 @@
 <p>这时候你就可以在<code>localhost:4000</code>里看到自己的博客了，他有个预制</p>
 <p>一般来说ctrl+c可以关掉服务，不行的话上cmd把占用了4000端口的进程kill掉也行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -p 5000	//可以把端口设定到5000，4000端口冲突了也能这样</span><br></pre></td></tr></table></figure>
-<hr>
+<hr />
 <p>然后就是激动人心的部署到网站上了捏，可以</p>
 <ul>
 <li>部署到Github Pages</li>
@@ -91,7 +91,7 @@
 <p>最后就迎来了我们激动人心的时刻</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean	// 清除原来生成在public里的文件</span><br><span class="line">hexo g	// 生成</span><br><span class="line">hexo d	// 部署</span><br></pre></td></tr></table></figure>
 <p>就可以了</p>
-<hr>
+<hr />
 <h2 id="部署到cloudflare-pages"><a class="markdownIt-Anchor" href="#部署到cloudflare-pages"></a> 部署到Cloudflare Pages</h2>
 <p>首先，在本地使用hexo的那部分都要搞，</p>
 <p><strong>不用改deploy里边的东西</strong></p>
@@ -99,9 +99,9 @@
 <p>按照提示绑上你的GitHub账号，选择你作为存博客的那个仓库，</p>
 <p>然后自己定一个你要的项目名字，他会部署到 名字.pages.dev上边</p>
 <p>构建选项这样写就完事儿了</p>
-<p><img src="/.com//post/hexo.jpg" alt="ee"></p>
+<p><img src="/img/post/hexo.jpg" alt="ee" /></p>
 <p><strong>以后你每次就把整个文件夹push到你的Github上，他会自动构建，一个月有500次，完全够用了捏</strong></p>
-<hr>
+<hr />
 <h1 id="最后是个性化以及使用方法的最后"><a class="markdownIt-Anchor" href="#最后是个性化以及使用方法的最后"></a> 最后是个性化以及使用方法的最后</h1>
 <blockquote>
 <p>我们已经搞的差不多了，现在是不是该写自己的第一篇博客了？</p>
@@ -115,7 +115,7 @@
 <p>tag和category可以写多级,不过tag好像没有上下级的层次，category则是从上到下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category:</span><br><span class="line">- a</span><br><span class="line">- b</span><br></pre></td></tr></table></figure>
 <p>这样就把你文章放在了a大类下的b小分类下</p>
-<hr>
+<hr />
 <p>然后是各种个性化</p>
 <p>换主题啊，自定义域名啊啥的，我懒得写了，自己上网查得了</p>
 <p>找主题上https://hexo.io/themes/就行</p>
