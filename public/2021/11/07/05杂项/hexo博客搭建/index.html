@@ -30,15 +30,15 @@
 <p><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.js</a></p>
 <p>下好了之后我们就可以用Git带的gitbush工具开始整活了</p>
 <p>首先到你想作为blog的文件夹里右键打开gitbush，或者直接<code>cd</code>,输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
 <p>之后可以用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
 <p>来查版本号，看看是不是真的装好了，喜闻乐见了属于是</p>
 <h2 id="github方面的工作"><a class="markdownIt-Anchor" href="#github方面的工作"></a> Github方面的工作</h2>
 <p><strong>新建仓库</strong></p>
 <p>这个部分有2种</p>
 <ul>
-<li>想使用Github pages功能来部署博客的，<a target="_blank" rel="noopener" href="http://xn--GitHub+github-vp8vga457mnp5bl6o780e.io">域名是GitHub用户名+github.io</a></li>
+<li>想使用Github pages功能来部署博客的，域名是 <a target="_blank" rel="noopener" href="http://xn--GitHub+github-1p8v876mxlyd.io">GitHub用户名+github.io</a></li>
 <li>想使用cloudflare pages来部署的，域名是 自定+pages.dev</li>
 </ul>
 <p>不过其实都行，反正最后可以自定义域名（</p>
@@ -49,16 +49,16 @@
 <p>这个部分是让每次push不用输账号密码了，省去了很多折磨的部分捏</p>
 </blockquote>
 <p>首先在Gitbush里输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot; 	// 你的Github用户名</span><br><span class="line">git config --global user.email &quot;youremail&quot;	// 你的Github邮箱</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;yourname&quot;</span> 	// 你的Github用户名</span><br><span class="line">git config --global user.email <span class="string">&quot;youremail&quot;</span>	// 你的Github邮箱</span><br></pre></td></tr></table></figure>
 <p>然后创建SSH</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail&quot;</span></span><br></pre></td></tr></table></figure>
 <p>然后他就会生成一个<code>.ssh</code>的文件夹，打开这个文件夹</p>
 <p>找到<code>id_rsa.pub</code>，把里边的内容复制一哈</p>
 <p>最后打开你的Github，找到setting里边有一个SSH keys，直接Add SSH key，把你复制的内容粘进去</p>
 <p>用这个看看你有没有成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <p>他应该会说</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi XXX! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi XXX! You<span class="string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
 <hr />
 <h1 id="其次是开始部署的其次"><a class="markdownIt-Anchor" href="#其次是开始部署的其次"></a> 其次是开始部署的其次</h1>
 <blockquote>
@@ -69,13 +69,13 @@
 <p>不管怎么说，部署之前我们首先得在本地能跑吧</p>
 </blockquote>
 <p>在你选定的文件夹里</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init myblog	//myblog叫啥都行</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init myblog	//myblog叫啥都行</span><br></pre></td></tr></table></figure>
 <p>然后你会发现多了一个叫myblog的文件夹，这个就是你以后写博客，整活的根目录了</p>
 <p><code>cd</code>进这个文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g			//生成页面</span><br><span class="line">hexo s			//在本地开启服务器预览</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g			//生成页面</span><br><span class="line">hexo s			//在本地开启服务器预览</span><br></pre></td></tr></table></figure>
 <p>这时候你就可以在<code>localhost:4000</code>里看到自己的博客了，他有个预制</p>
 <p>一般来说ctrl+c可以关掉服务，不行的话上cmd把占用了4000端口的进程kill掉也行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -p 5000	//可以把端口设定到5000，4000端口冲突了也能这样</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -p 5000	//可以把端口设定到5000，4000端口冲突了也能这样</span><br></pre></td></tr></table></figure>
 <hr />
 <p>然后就是激动人心的部署到网站上了捏，可以</p>
 <ul>
@@ -85,11 +85,11 @@
 <h2 id="部署到github-pages"><a class="markdownIt-Anchor" href="#部署到github-pages"></a> 部署到Github Pages</h2>
 <p>打开你hexo init新建的文件夹，找到<code>_config.yml</code></p>
 <p>在里边找到deploy，改一改</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">  // repo里边把YourgithubName替换成你自己的</span><br><span class="line">  // branch里边把master换成你那个仓库主分支的名字</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/YourgithubName/YourgithubName.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="string">//</span> <span class="string">repo里边把YourgithubName替换成你自己的</span></span><br><span class="line">  <span class="string">//</span> <span class="string">branch里边把master换成你那个仓库主分支的名字</span></span><br></pre></td></tr></table></figure>
 <p>然后还要装一个</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save	// 有时候装了新主题报错的话，把这个重新装一下就行了捏</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save	// 有时候装了新主题报错的话，把这个重新装一下就行了捏</span><br></pre></td></tr></table></figure>
 <p>最后就迎来了我们激动人心的时刻</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean	// 清除原来生成在public里的文件</span><br><span class="line">hexo g	// 生成</span><br><span class="line">hexo d	// 部署</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean	// 清除原来生成在public里的文件</span><br><span class="line">hexo g	// 生成</span><br><span class="line">hexo d	// 部署</span><br></pre></td></tr></table></figure>
 <p>就可以了</p>
 <hr />
 <h2 id="部署到cloudflare-pages"><a class="markdownIt-Anchor" href="#部署到cloudflare-pages"></a> 部署到Cloudflare Pages</h2>
@@ -99,7 +99,7 @@
 <p>按照提示绑上你的GitHub账号，选择你作为存博客的那个仓库，</p>
 <p>然后自己定一个你要的项目名字，他会部署到 名字.pages.dev上边</p>
 <p>构建选项这样写就完事儿了</p>
-<p><img src="/img/post/hexo.jpg" alt="ee" /></p>
+<p><img src="https://sm.ms/image/bmjhXM4iIeuZxSy" alt="" /></p>
 <p><strong>以后你每次就把整个文件夹push到你的Github上，他会自动构建，一个月有500次，完全够用了捏</strong></p>
 <hr />
 <h1 id="最后是个性化以及使用方法的最后"><a class="markdownIt-Anchor" href="#最后是个性化以及使用方法的最后"></a> 最后是个性化以及使用方法的最后</h1>
@@ -107,13 +107,13 @@
 <p>我们已经搞的差不多了，现在是不是该写自己的第一篇博客了？</p>
 </blockquote>
 <p>输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n 博客名</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n 博客名</span><br></pre></td></tr></table></figure>
 <p>你会发现在<code>source/_post</code>文件夹内出现了一篇markdown，就可以在里边写了捏</p>
 <p>这时，好奇的你也许会发现他开头有个类似于</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxx</span><br><span class="line">date: </span><br><span class="line">tag: </span><br><span class="line">category: </span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxx</span><br><span class="line">date: </span><br><span class="line">tag: </span><br><span class="line"><span class="section">category: </span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
 <p>之类的东西，这个是标定一些你文章的属性的东西，具体来说其实还是要看你用的主题是如何规定的，自己查人主题文档去捏。</p>
 <p>tag和category可以写多级,不过tag好像没有上下级的层次，category则是从上到下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category:</span><br><span class="line">- a</span><br><span class="line">- b</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">category:</span><br><span class="line"><span class="bullet">-</span> a</span><br><span class="line"><span class="bullet">-</span> b</span><br></pre></td></tr></table></figure>
 <p>这样就把你文章放在了a大类下的b小分类下</p>
 <hr />
 <p>然后是各种个性化</p>
