@@ -50,7 +50,7 @@ hexo -v
 
 这个部分有2种
 
-- 想使用Github pages功能来部署博客的，域名是GitHub用户名+github.io
+- 想使用Github pages功能来部署博客的，域名是 GitHub用户名+github.io
 - 想使用cloudflare pages来部署的，域名是 自定+pages.dev
 
 不过其实都行，反正最后可以自定义域名（
