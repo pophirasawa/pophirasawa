@@ -30,13 +30,13 @@ git工具和node.js直接去官网上下就行了捏
 
 首先到你想作为blog的文件夹里右键打开gitbush，或者直接`cd`,输入
 
-```嘿嘿
+```bash
 npm install -g hexo
 ```
 
 之后可以用
 
-```嘿嘿
+```bash
 hexo -v
 ```
 
@@ -69,14 +69,14 @@ hexo -v
 
 首先在Gitbush里输入
 
-```嘿嘿
+```bash
 git config --global user.name "yourname" 	// 你的Github用户名
 git config --global user.email "youremail"	// 你的Github邮箱
 ```
 
 然后创建SSH
 
-```嘿嘿
+```bash
 ssh-keygen -t rsa -C "youremail"
 ```
 
@@ -88,13 +88,13 @@ ssh-keygen -t rsa -C "youremail"
 
 用这个看看你有没有成功
 
-```嘿嘿
+```bash
 ssh -T git@github.com
 ```
 
 他应该会说
 
-```嘿嘿
+```bash
 Hi XXX! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
@@ -110,7 +110,7 @@ Hi XXX! You've successfully authenticated, but GitHub does not provide shell acc
 
 在你选定的文件夹里
 
-```嘿嘿
+```bash
 hexo init myblog	//myblog叫啥都行
 ```
 
@@ -118,7 +118,7 @@ hexo init myblog	//myblog叫啥都行
 
 `cd`进这个文件夹
 
-```嘿嘿
+```bash
 hexo g			//生成页面
 hexo s			//在本地开启服务器预览
 ```
@@ -127,7 +127,7 @@ hexo s			//在本地开启服务器预览
 
 一般来说ctrl+c可以关掉服务，不行的话上cmd把占用了4000端口的进程kill掉也行
 
-```嘿嘿
+```bash
 hexo s -p 5000	//可以把端口设定到5000，4000端口冲突了也能这样
 ```
 
@@ -144,7 +144,7 @@ hexo s -p 5000	//可以把端口设定到5000，4000端口冲突了也能这样
 
 在里边找到deploy，改一改
 
-```嘿嘿
+```yaml
 deploy:
   type: git
   repo: https://github.com/YourgithubName/YourgithubName.github.io.git
@@ -155,13 +155,13 @@ deploy:
 
 然后还要装一个
 
-```嘿嘿
+```bash
 npm install hexo-deployer-git --save	// 有时候装了新主题报错的话，把这个重新装一下就行了捏
 ```
 
 最后就迎来了我们激动人心的时刻
 
-```嘿嘿
+```bash
 hexo clean	// 清除原来生成在public里的文件
 hexo g	// 生成
 hexo d	// 部署
@@ -197,7 +197,7 @@ hexo d	// 部署
 
 输入
 
-```嘿嘿
+```bash
 hexo n 博客名
 ```
 
@@ -205,7 +205,7 @@ hexo n 博客名
 
 这时，好奇的你也许会发现他开头有个类似于
 
-```嘿嘿
+```markdown
 ---
 title: xxx
 date: 
@@ -218,7 +218,7 @@ category:
 
 tag和category可以写多级,不过tag好像没有上下级的层次，category则是从上到下
 
-```
+```markdown
 category:
 - a
 - b
