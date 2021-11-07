@@ -185,7 +185,7 @@ hexo d	// 部署
 
 构建选项这样写就完事儿了
 
-![ee](/hexo博客搭建/1.jpg)
+![ee](https://images.cnblogs.com/cnblogs_com/pophirasawa/2057955/o_211107095249_hexo.jpg)
 
 **以后你每次就把整个文件夹push到你的Github上，他会自动构建，一个月有500次，完全够用了捏**
 
