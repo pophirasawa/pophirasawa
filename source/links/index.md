@@ -21,3 +21,4 @@ date: 2021-11-04 13:52:29
 
 **伞哥：**[Fohunbrella's Blog](https://fohunbrella.github.io/)
 
+**Bangg：**[Banned's Blog](https://blog.banned.top/)
