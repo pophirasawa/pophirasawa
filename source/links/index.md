@@ -23,3 +23,6 @@ date: 2021-11-04 13:52:29
 
 **Bangg：**[Banned's Blog](https://blog.banned.top/)
 **TonyZhao：**[TonyZhao's Blog](https://blog.tonyzhao.xyz/)
+
+**WA_Automaton:**[WA_Automaton's Blog](https://wa-automaton.github.io/)
+
