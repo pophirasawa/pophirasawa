@@ -19,8 +19,8 @@ theme_color:
 
 # Main menu navigation
 menu:
-   Home: /
    这里可以转到Wiki哦: /wiki/
+   Home: /
    Archives: /archives
    Tags: /tags
    Categories: /categories
