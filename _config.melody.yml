@@ -20,12 +20,13 @@ theme_color:
 # Main menu navigation
 menu:
    Home: /
+   这里可以转到Wiki哦: /wiki/
    Archives: /archives
    Tags: /tags
    Categories: /categories
    Links: /links
    About: /about
-   Wiki: /wiki/
+   
 
 # Favicon
 # ---------------
