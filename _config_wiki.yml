@@ -120,8 +120,8 @@ nofollow:
     - pophirasawa.top/wiki # eg: zthxxx.me
 
 auto_dir_categorize:
-	enable: true  # options:true, false; default is true
-	force: true # options:true, false; default is false
+  enable: true  # options:true, false; default is true
+  force: false # options:true, false; default is false
 
 
 
