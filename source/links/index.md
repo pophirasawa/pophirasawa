@@ -5,13 +5,13 @@ date: 2021-11-04 13:52:29
 
 > 有没有一种可能，以下的都是超人捏
 
-# 不是 **可能** 而是无可辩驳的 **事实** 哦
+# 是无可辩驳的 **事实** 哦
 
 
 
 
 
-**Jnn：**[POPCHICKEN's Blog](https://jnn.icu/)
+**Jnnnn：**[POPCHICKEN's Blog](https://jnn.icu/)
 
 **蘑菇：**[Mushroom323's Blog](https://mushroom323.github.io/)
 
@@ -26,3 +26,4 @@ date: 2021-11-04 13:52:29
 
 **WA_Automaton:**[WA_Automaton's Blog](https://wa-automaton.github.io/)
 
+**孙老师**：[香芋派Taro's Blog](https://taropie0224.github.io/)

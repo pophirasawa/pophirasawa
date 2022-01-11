@@ -751,6 +751,7 @@ footer.is-mobile {
   color: #000;
 }
 .recent-post-item .article-meta .sticky {
+  content: "Postion Zero";
   color: #ff7242;
 }
 .recent-post-item .article-meta i {

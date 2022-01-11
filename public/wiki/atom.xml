@@ -6,7 +6,7 @@
   <link href="https://pophirasawa.top/wiki/atom.xml" rel="self"/>
   
   <link href="https://pophirasawa.top/wiki/"/>
-  <updated>2022-01-02T03:05:53.684Z</updated>
+  <updated>2022-01-09T18:00:44.623Z</updated>
   <id>https://pophirasawa.top/wiki/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>鸽巢原理</title>
+    <link href="https://pophirasawa.top/wiki/wiki/01%E5%AD%A6%E4%B9%A0/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/a/"/>
+    <id>https://pophirasawa.top/wiki/wiki/01%E5%AD%A6%E4%B9%A0/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/a/</id>
+    <published>2022-01-09T17:10:00.000Z</published>
+    <updated>2022-01-09T18:00:44.623Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="内容"><a class="markdownIt-Anchor" href="#内容"></a> 内容</h1><p>鸽巢原理及其一些推论，包括但不限于</p><ul><li>简单形式</li><li>中国剩余定理</li><li>加强形式</li><li>Ramesy定理</li><li>呃呃</li></ul><span id="more"></span><hr /><h2 id="简单形式"><a class="markdownIt-Anchor" href="#简单形式"></a> 简单形式</h2><blockquote><p>n+1个物品放入n个盒子中，至少存在一个盒子中存在多个物品</p></blockquote><p>可以抽象表示为:</p><p>令X，Y为两有限集，令f为一个从X到Y的函数</p><ul><li>若X的元素大于Y的元素，则f不是一对一的</li><li>若X和Y有相同个数的元素，且f是映上的，则f是一对一的</li><li>若X和Y有相同个数的元素，且f是一对一的，则f是映上的</li></ul><p>然后就可以发展出一些应用了</p><hr /><h2 id="推论中国剩余定理"><a class="markdownIt-Anchor" href="#推论中国剩余定理"></a> 推论：中国剩余定理</h2><blockquote><p>令m和n为互素的正整数，有正整数a、b，且a不大于m-1，b不大于n-1。则存在x，x mod m = a，x mod n = b。</p></blockquote><p>证明：先得出在a，a+m，a+2m，…(n-1)m+a中mod n没有相同的余数。因此n个数中0到n-1每个数都作为余数出现。那对与b也存在对应的p令pm+a mod n = b</p><hr />]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;内容&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#内容&quot;&gt;&lt;/a&gt; 内容&lt;/h1&gt;
+&lt;p&gt;鸽巢原理及其一些推论，包括但不限于&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;简单形式&lt;/li&gt;
+&lt;li&gt;中国剩余定理&lt;/li&gt;
+&lt;li&gt;加强形式&lt;/li&gt;
+&lt;li&gt;Ramesy定理&lt;/li&gt;
+&lt;li&gt;呃呃&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="01学习" scheme="https://pophirasawa.top/wiki/categories/01%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="组合数学" scheme="https://pophirasawa.top/wiki/categories/01%E5%AD%A6%E4%B9%A0/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>0X00</title>
