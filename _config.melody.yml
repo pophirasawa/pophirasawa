@@ -362,3 +362,7 @@ disable_baidu_transformation: true
 # 404 Page SubTitle
 404Text: “寄了”
 
+# mermaid chart
+mermaid: ## mermaid url https://github.com/knsv/mermaid
+  enable: true  # default true
+  theme: forest
