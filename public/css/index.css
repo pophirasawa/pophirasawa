@@ -182,8 +182,9 @@ figure.highlight {
 blockquote {
   margin: 0;
   padding: 0 0.6rem;
-  border-left: 0.2rem solid #dfe2e5;
+  border-left: 0.2rem solid #39c5bb;
   color: #6a737d;
+  background: rgba(57,197,187,0.08);
 }
 .article-container pre,
 .article-container code {

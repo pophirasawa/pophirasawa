@@ -6,7 +6,7 @@ categories:
 - JAVA
 ---
 
-# 0. 引言
+# 引言
 
 为了应付大作业，特地速成一哈JVAV
 
@@ -25,9 +25,9 @@ categories:
 
 ---
 
-# 1. 声明
+# 声明
 
-### 和cpp不同的部分
+## 和cpp不同的部分
 
 ```java
 int[] a = new int[5];	//数组
@@ -52,9 +52,9 @@ ps.
 
 ---
 
-## 2. 方法
+# 方法
 
-### 可变参数
+## 可变参数
 
 类似函数传入数组，用`类型...`定义
 
@@ -72,7 +72,7 @@ class Group {
 
 
 
-### 构造方法
+## 构造方法
 
 类构造时调用的方法	~~构造函数~~
 
@@ -86,7 +86,7 @@ class Group {
 
 
 
-### 实例化
+## 实例化
 
 ```java
 A a = new A();
@@ -94,9 +94,9 @@ A a = new A();
 
 ----
 
-# 3. 类的一些东西
+# 类的一些东西
 
-### 继承
+## 继承
 
 java是单继承的，用`extends`关键字
 
@@ -111,7 +111,7 @@ class B extends A{
 
 
 
-### super
+## super
 
 `super`代表了父类，`super();`即父类的构造方法
 
@@ -125,7 +125,7 @@ class B extends A{
 
 
 
-### 阻止继承
+## 阻止继承
 
 感觉暂时用不上
 
@@ -138,7 +138,7 @@ public sealed class A permits B, C {
 
 
 
-### 上/下转型
+## 上/下转型
 
 **继承树object>a>b**
 
@@ -180,9 +180,9 @@ if (obj instanceof String s) {// 可以直接使用变量s
 
 
 
-# 4. 多态
+# 多态
 
-### override
+## override
 
 首先说明方法签名：
 
@@ -199,7 +199,7 @@ if (obj instanceof String s) {// 可以直接使用变量s
 
 
 
-### 多态
+## 多态
 
 > 多态是指，针对某个类型的方法调用，其真正执行的方法取决于运行时期实际类型的方法
 
@@ -212,8 +212,7 @@ if (obj instanceof String s) {// 可以直接使用变量s
 final修饰的类无法继承，final修饰的方法不会被覆写，final修饰的变量初始化之后无法更改
 
 
-
-### 抽象类
+## 抽象类
 
 类似cpp里边的虚函数，其实就是父类单纯提供方法签名而不实现任何功能，即抽象方法的时候用的。
 
@@ -239,9 +238,9 @@ abstract class Person {
 
 ----
 
-# 5. 接口
+# 接口
 
-### 接口本质是更抽象的抽象类
+## 接口本质是更抽象的抽象类
 
 如果一个抽象类没有字段，所有方法全部都是抽象方法，就可以用接口改写。
 
@@ -268,7 +267,7 @@ class Student implements Person, Hello { // 实现了两个interface
 
 
 
-### 有关接口继承
+## 有关接口继承
 
 这玩意看着好复杂....
 
@@ -295,9 +294,9 @@ class B implements A{
 
 ---
 
-# 6. 一些杂项
+# 一些杂项
 
-### 静态字段
+## 静态字段
 
 **静态字段啥的跟cpp类里边的差不多，静态方法是可以直接用方法名调用，类似正常的函数，但是他显然不能访问实例的非静态字段**
 
@@ -305,7 +304,7 @@ class B implements A{
 
 
 
-### 包
+## 包
 
 ~~类似命名空间~~
 
@@ -315,7 +314,7 @@ class B implements A{
 
 
 
-### import
+## import
 
 使用`import`语句，导入包中的类或者子包
 
@@ -325,7 +324,7 @@ class B implements A{
 
 
 
-### 作用域
+## 作用域
 
 感觉不用写。
 
@@ -333,7 +332,7 @@ class B implements A{
 
 
 
-### 内部类
+## 内部类
 
 嵌套类，可以声明可以匿名
 
@@ -347,7 +346,7 @@ Runnable r = new 父类类名() {
 
 
 
-### classpath和jar
+## classpath和jar
 
 ~~不会~~
 
@@ -355,17 +354,17 @@ jar包相当于zip包，其实就是把编译好的一堆`.class`文件打包到
 
 
 
-### 模块
+## 模块
 
 应该是依赖管理之类的，懒得看了
 
 ----
 
-# 7. JAVA的一些核心类
+# JAVA的一些核心类
 
 > 怎么都nm4点了，写完这段歇了（
 
-### String
+## String
 
 ```java
 String s = "eee";
@@ -426,7 +425,7 @@ String s = new String(cs); // char[] -> String
 
 
 
-### StringBuilder
+## StringBuilder
 
 String可以直接用+拼接，但是效率不高。
 
@@ -451,7 +450,7 @@ String s = sb.toString();
 
 
 
-### 包装类型
+## 包装类型
 
 意思就是类似`int`这种基本类型用类进行了包装，可以使用引用和一些奇奇怪怪的方法。
 
@@ -486,8 +485,7 @@ int x = n; // 编译器自动使用Integer.intValue()
 静态方法`parseInt()`可以把字符串解析成一个整数
 
 
-
-### 枚举类
+## 枚举类
 
 例如我要定义周一到周日这7天，而且我不想让这7天以外的符号和他进行操作，就可以用`enum`关键字声明
 
@@ -543,7 +541,7 @@ enum Weekday {
 
 
 
-### 记录类
+## 记录类
 
 用来记录数据的不变类，写的更方便
 
@@ -555,13 +553,13 @@ public record A(int x, int y){}
 
 
 
-### BigInteger
+## BigInteger
 
 高精度，用它给你的方法就完了。
 
 实例化的时候要用字符串
 
-### BigDecimal
+## BigDecimal
 
 和上边那个差不多呃
 
@@ -569,7 +567,7 @@ public record A(int x, int y){}
 
 
 
-### 工具类
+## 工具类
 
 - Math：数学计算
 - Random：生成伪随机数
@@ -577,7 +575,7 @@ public record A(int x, int y){}
 
 呃这个感觉没啥好说的
 
-#### Math
+### Math
 
 ```java
 Math.abs(-100); // 100
@@ -604,7 +602,7 @@ Math.sin(Math.PI / 6); // sin(π/6) = 0.5
 Math.random(); // 0.53907... 每次都不一样
 ```
 
-#### Random
+### Random
 
 ```java
 Random r = new Random(种子);
@@ -616,7 +614,7 @@ r.nextDouble(); // 0.3716...生成一个[0,1)之间的double
 r.nextBytes();
 ```
 
-#### SecureRandom
+### SecureRandom
 
 ```java
 SecureRandom sr = new SecureRandom();
