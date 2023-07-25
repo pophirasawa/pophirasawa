@@ -9,11 +9,11 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "5.4.0"
+    "version": "5.4.2"
   },
   "dependencies": {
     "@upupming/hexo-renderer-markdown-it-plus": "^2.0.2",
-    "hexo": "^5.0.0",
+    "hexo": "^5.4.2",
     "hexo-asset-img": "^1.0.0",
     "hexo-autonofollow": "^1.0.1",
     "hexo-browsersync": "^0.3.0",
