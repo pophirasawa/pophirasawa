@@ -2,7 +2,8 @@
 title: CQL-保守Q学习
 date: 2023-07-25 08:44:45
 tags: RL
-
+categories:
+- DRL
 ---
 > 记录一下读论文的情况喵
 # 引入

@@ -7,11 +7,10 @@ date: 2021-11-04 13:52:29
 
 # 确实
 
-**Jnnnn：**[POPCHICKEN's Blog](https://jnn.icu/)
+**Jnnnnn：**[POPCHICKEN's Blog](https://jnn.icu/)
 **蘑菇：**[Mushroom323's Blog](https://mushroom323.github.io/)
 **Heye：**[Heyewuyue1's Blog](https://heyewuyue1.github.io/)
 **F0：**[Ibukifalling's Blog](https://ibukifalling.github.io/)
-
 **伞哥：**[Fohunbrella's Blog](https://fohunbrella.github.io/)
 **Bangg：**[Banned's Blog](https://blog.banned.top/)
 **TonyZhao：**[TonyZhao's Blog](https://blog.tonyzhao.xyz/)
@@ -23,8 +22,8 @@ date: 2021-11-04 13:52:29
 **石上:** [ 石上](https://lanweifrj.github.io/) 
 **RuaYiii:** [Rua宝](https://ruayiii.github.io/) 
 **Poria:** [Poria](https://poriahcorvus.github.io/) 
-
 **晓羽:** [晓羽](https://xylog.cn/) 
-
 **天泽龟:** [天泽龟](https://turleing.github.io/)
 **Jungle's Blog:** [Jungle](https://jungle430.github.io/)
+**anda:** [anda](https://junpickle.github.io)
+**泽村睿:**[泽村睿](https://scientificw.github.io/)
