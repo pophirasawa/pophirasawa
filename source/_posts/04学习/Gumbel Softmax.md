@@ -26,12 +26,10 @@ $$
 
 
 
-若z的分布与我们需要求梯度的参数$ \theta $无关，则：
+若z的分布与我们需要求梯度的参数$\theta$无关，则：
 $$
-\nabla _\theta \mathbb{E} _{p(z)}[f_\theta (z)] &=& \nabla _\theta[\int _zp(z)f_\theta(z)dz]\\
-
-&=& \int_zp(z)[\nabla_\theta f_\theta(z)]dz\\
- &=&\mathbb{E}_{p(z)}[\nabla_\theta f_\theta(z)]
+\nabla_\theta \mathbb{E}_{p(z)}[f_\theta (z)]=\nabla_\theta[\int _zp(z)f_\theta(z)dz]\\
+= \int_zp(z)[\nabla_\theta f_\theta(z)]dz\\=\mathbb{E}_{p(z)}[\nabla_\theta f_\theta(z)]
 $$
 
 
@@ -41,7 +39,8 @@ $$
 $$
 计算梯度：
 $$
-\nabla _\theta \mathbb{E} _{p_\theta(z)}[f_\theta (z)]&=&\nabla _\theta[\int _zp_\theta(z)f_\theta(z)dz]\\&=&\int_z\nabla_\theta[p_\theta(z)f_\theta(z)]dz\\&=&\int_zf_\theta(z)\nabla_\theta p_\theta(z)dz+\int_zp_\theta(z)\nabla_\theta f_\theta (z) dz
+\nabla _\theta \mathbb{E} _{p_\theta(z)}[f_\theta (z)] = \nabla _\theta[\int _zp_\theta(z)f_\theta(z)dz]\\ =\int_z\nabla_\theta[p_\theta(z)f_\theta(z)]dz\\
+= \int_zf_\theta(z)\nabla_\theta p_\theta(z)dz+\int_zp_\theta(z)\nabla_\theta f_\theta (z) dz
 $$
 由于我们需要计算分布p的梯度，第一项无法变成期望的形式，因此也无法进行采样。
 

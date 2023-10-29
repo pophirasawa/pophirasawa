@@ -62,7 +62,7 @@ $$
 
 **[策略迭代]** 迭代过程为$\pi_{k+1}=\mathbf G(\mathbf v_{\pi_k})$
 
-> 原理：由$\mathbf{B_*v_{\pi_k}}=\mathbf B_{\mathbf G(\pi_k)}\mathbf v_{\pi_k}=\mathbf B_{\pi_{k+1}}\mathbf v_{\pi_k} $，有$\mathbf{B_*v_{\pi_k}}\ge \mathbf{B_{\pi_k}v_{\pi_k}}= \mathbf{v_{\pi_k}}$
+> 原理：由$\mathbf{B_*v_{\pi_k}}=\mathbf B_{\mathbf G(\pi_k)}\mathbf v_{\pi_k}=\mathbf B_{\pi_{k+1}}\mathbf v_{\pi_k}$，有$\mathbf{B_*v_{\pi_k}}\ge \mathbf{B_{\pi_k}v_{\pi_k}}= \mathbf{v_{\pi_k}}$
 >
 > 所以$\mathbf{B^N_{\pi_{k+1}}v_{\pi_k}}=\mathbf v_{\pi_{k+1}}\ge \mathbf{B_{\pi_k}v_{\pi_k}}= \mathbf{v_{\pi_k}}$，说明这是一个不断优化的过程
 
