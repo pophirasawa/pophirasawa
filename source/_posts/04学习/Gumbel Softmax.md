@@ -58,7 +58,7 @@ $$
 $$
 L_\theta=\int _zp_\theta(z)f(z)dz
 $$
-我们需要在进行采样的同时保留$ \theta $的梯度，为此，我们考虑先从无参分布q中进行采样，然后通过某种变换生成z：
+我们需要在进行采样的同时保留$\theta$的梯度，为此，我们考虑先从无参分布q中进行采样，然后通过某种变换生成z：
 $$
 \epsilon \sim q(\epsilon)\\
 z=g_\theta(\epsilon)
