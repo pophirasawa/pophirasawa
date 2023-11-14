@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;default&quot;]"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="JAVA快速入门(1)"><meta name="keywords" content="语言"><meta name="author" content="PopHirasawa"><meta name="copyright" content="PopHirasawa"><title>JAVA快速入门(1) | PopHirasawa's Blog</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=2.9.0"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css?version=2.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '5.4.2'
+} </script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="PopHirasawa's Blog" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E"><span class="toc-number">2.</span> <span class="toc-text"> 声明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%92%8Ccpp%E4%B8%8D%E5%90%8C%E7%9A%84%E9%83%A8%E5%88%86"><span class="toc-number">2.1.</span> <span class="toc-text"> 和cpp不同的部分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text"> 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.</span> <span class="toc-text"> 可变参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text"> 构造方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-number">3.3.</span> <span class="toc-text"> 实例化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%9C%E8%A5%BF"><span class="toc-number">4.</span> <span class="toc-text"> 类的一些东西</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">4.1.</span> <span class="toc-text"> 继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#super"><span class="toc-number">4.2.</span> <span class="toc-text"> super</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E6%AD%A2%E7%BB%A7%E6%89%BF"><span class="toc-number">4.3.</span> <span class="toc-text"> 阻止继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E8%BD%AC%E5%9E%8B"><span class="toc-number">4.4.</span> <span class="toc-text"> 上&#x2F;下转型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-number">5.</span> <span class="toc-text"> 多态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#override"><span class="toc-number">5.1.</span> <span class="toc-text"> override</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81-2"><span class="toc-number">5.2.</span> <span class="toc-text"> 多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">5.3.</span> <span class="toc-text"> 抽象类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">6.</span> <span class="toc-text"> 接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%9C%AC%E8%B4%A8%E6%98%AF%E6%9B%B4%E6%8A%BD%E8%B1%A1%E7%9A%84%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">6.1.</span> <span class="toc-text"> 接口本质是更抽象的抽象类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF"><span class="toc-number">6.2.</span> <span class="toc-text"> 有关接口继承</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%9D%82%E9%A1%B9"><span class="toc-number">7.</span> <span class="toc-text"> 一些杂项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%AD%97%E6%AE%B5"><span class="toc-number">7.1.</span> <span class="toc-text"> 静态字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85"><span class="toc-number">7.2.</span> <span class="toc-text"> 包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import"><span class="toc-number">7.3.</span> <span class="toc-text"> import</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">7.4.</span> <span class="toc-text"> 作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">7.5.</span> <span class="toc-text"> 内部类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#classpath%E5%92%8Cjar"><span class="toc-number">7.6.</span> <span class="toc-text"> classpath和jar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97"><span class="toc-number">7.7.</span> <span class="toc-text"> 模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A0%B8%E5%BF%83%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text"> JAVA的一些核心类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#string"><span class="toc-number">8.1.</span> <span class="toc-text"> String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stringbuilder"><span class="toc-number">8.2.</span> <span class="toc-text"> StringBuilder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B"><span class="toc-number">8.3.</span> <span class="toc-text"> 包装类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB"><span class="toc-number">8.4.</span> <span class="toc-text"> 枚举类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E7%B1%BB"><span class="toc-number">8.5.</span> <span class="toc-text"> 记录类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#biginteger"><span class="toc-number">8.6.</span> <span class="toc-text"> BigInteger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bigdecimal"><span class="toc-number">8.7.</span> <span class="toc-text"> BigDecimal</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-number">8.8.</span> <span class="toc-text"> 工具类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#math"><span class="toc-number">8.8.1.</span> <span class="toc-text"> Math</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#random"><span class="toc-number">8.8.2.</span> <span class="toc-text"> Random</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#securerandom"><span class="toc-number">8.8.3.</span> <span class="toc-text"> SecureRandom</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/HTT.jpg"></div><div class="author-info__name text-center">PopHirasawa</div><div class="author-info__description text-center"></div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/pophirasawa">也许是GitHub</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">25</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">16</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">13</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">My Friends</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://jnn.icu/">诺诺诺诺诺诺诺宝's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://mushroom323.github.io/">Mushroom's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://heyewuyue1.github.io/">何夜舞月's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://ibukifalling.github.io/">茯苓's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://fohunbrella.github.io/">Unbrella's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.banned.top/">Bangg's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.tonyzhao.xyz/">TonyZhao's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://wa-automaton.github.io/">WA_自动机's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://taropie0224.github.io/">香芋派Taro's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://0xe9.me/">山荷叶's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://sherroe.github.io/">鱼籽's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://kafudolly.github.io/">mhy's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://lanweifrj.github.io/">石上's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://mindhunter114.github.io/">万叶's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://ruayiii.github.io/">RuaYiii's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://poriahcorvus.github.io/">Poria's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://xylog.cn/">晓羽's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://turleing.github.io/">天泽龟's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://jungle430.github.io/">Jungle's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://junpickle.github.io">anda's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://scientificw.github.io/">泽村睿's Blog</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/yui.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">PopHirasawa's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/wiki/">这里可以转到Wiki哦</a><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/links">Links</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">JAVA快速入门(1)</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-04-25</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/JAVA/">JAVA</a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">3k</span><span class="post-meta__separator">|</span><span>Reading time: 11 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="引言"><a class="markdownIt-Anchor" href="#引言"></a> 引言</h1>
+<p>为了应付大作业，特地速成一哈JVAV</p>
+<p>省略了一堆东西</p>
+<p>估计过几天会继续写后篇，到时候再看吧。</p>
+<p>内容包括</p>
+<ul>
+<li>语法快速入门（这玩意和cpp大部分很像所以没咋写）</li>
+<li>面向对象基础</li>
+<li>杂项</li>
+<li>一些核心类</li>
+<li>？</li>
+</ul>
+<span id="more"></span>
+<hr />
+<h1 id="声明"><a class="markdownIt-Anchor" href="#声明"></a> 声明</h1>
+<h2 id="和cpp不同的部分"><a class="markdownIt-Anchor" href="#和cpp不同的部分"></a> 和cpp不同的部分</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];	<span class="comment">//数组</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];		<span class="comment">//自动类型推导</span></span><br></pre></td></tr></table></figure>
+<p>ps.</p>
+<p><strong>任何数组都是引用类型！</strong></p>
+<p><strong>string也是！</strong></p>
+<p><strong>实例化的对象也是！</strong></p>
+<p>这时候要判断是不是相等要用</p>
+<p><code>a.equals(b)</code>的方法</p>
+<p>这个时候赋值是引用类型参数绑定</p>
+<p>感觉有点像指针。。还有那个python的原理</p>
+<hr />
+<h1 id="方法"><a class="markdownIt-Anchor" href="#方法"></a> 方法</h1>
+<h2 id="可变参数"><a class="markdownIt-Anchor" href="#可变参数"></a> 可变参数</h2>
+<p>类似函数传入数组，用<code>类型...</code>定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Group</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String[] names;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNames</span><span class="params">(String... names)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.names = names;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>传入可以直接传入多个string</p>
+<h2 id="构造方法"><a class="markdownIt-Anchor" href="#构造方法"></a> 构造方法</h2>
+<p>类构造时调用的方法	<s>构造函数</s></p>
+<p>可以重载</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Group</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Group&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实例化"><a class="markdownIt-Anchor" href="#实例化"></a> 实例化</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A a = <span class="keyword">new</span> A();</span><br></pre></td></tr></table></figure>
+<hr />
+<h1 id="类的一些东西"><a class="markdownIt-Anchor" href="#类的一些东西"></a> 类的一些东西</h1>
+<h2 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h2>
+<p>java是单继承的，用<code>extends</code>关键字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经典<code>protected</code>类型，令子类可以访问父类的内容</p>
+<p><strong>很显然，子类不应该定义和父类重名的字段，private也不行</strong></p>
+<h2 id="super"><a class="markdownIt-Anchor" href="#super"></a> super</h2>
+<p><code>super</code>代表了父类，<code>super();</code>即父类的构造方法</p>
+<p>实例化类的时候，会默认调用一个无参的<code>super();</code></p>
+<p>如果此时父类没有无参构造方法会报错</p>
+<p>解决方法是手动在类构造函数上加一句父类对应的<code>super(xxxx);</code></p>
+<p><strong>子类不会继承任何父类的构造方法</strong></p>
+<h2 id="阻止继承"><a class="markdownIt-Anchor" href="#阻止继承"></a> 阻止继承</h2>
+<p>感觉暂时用不上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> sealed <span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="title">permits</span> <span class="title">B</span>, <span class="title">C</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用<code>sealed</code>和<code>permits</code>可以让只有指定的类才能继承该类</p>
+<h2 id="上下转型"><a class="markdownIt-Anchor" href="#上下转型"></a> 上/下转型</h2>
+<p><strong>继承树object&gt;a&gt;b</strong></p>
+<p>向上：</p>
+<p>直接用引用变量指向子类实例就行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A a = <span class="keyword">new</span> B();</span><br></pre></td></tr></table></figure>
+<p>向下：</p>
+<p>父类类型强转到子类类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A a = <span class="keyword">new</span> B();</span><br><span class="line">B b = <span class="keyword">new</span> B();</span><br><span class="line">b = (B)a;</span><br></pre></td></tr></table></figure>
+<p><code>instanceof</code>为操作符，判断一个东西是不是指定类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (obj <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">    String s = (String) obj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//或者可以直接一起转型</span></span><br><span class="line">Object obj = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (obj <span class="keyword">instanceof</span> String s) &#123;<span class="comment">// 可以直接使用变量s            </span></span><br><span class="line">	System.out.println(s.toUpperCase());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种转型有时候我们在方法中传递形参为父类，又想调用子类的方法时，在确定了传入实参为子类后可以进行一个强转。</p>
+<h1 id="多态"><a class="markdownIt-Anchor" href="#多态"></a> 多态</h1>
+<h2 id="override"><a class="markdownIt-Anchor" href="#override"></a> override</h2>
+<p>首先说明方法签名：</p>
+<ul>
+<li>方法名</li>
+<li>参数列表</li>
+</ul>
+<p>如果子类的一个方法方法签名和父类的完全一致，则子类会覆写父类的方法</p>
+<p>使用<code>@Override</code>修饰，编译器还会帮助检查是否为覆写而非重载</p>
+<p><code>@Override</code>并非必须</p>
+<p><strong>java调用方法时根据的是对象真正的类型而不是引用的类型进行调用</strong></p>
+<h2 id="多态-2"><a class="markdownIt-Anchor" href="#多态-2"></a> 多态</h2>
+<blockquote>
+<p>多态是指，针对某个类型的方法调用，其真正执行的方法取决于运行时期实际类型的方法</p>
+</blockquote>
+<p>如果调用父类被覆写了的方法</p>
+<p>可以使用<code>super.方法名()</code>来调用</p>
+<p><code>final</code> 感觉类似const</p>
+<p>final修饰的类无法继承，final修饰的方法不会被覆写，final修饰的变量初始化之后无法更改</p>
+<h2 id="抽象类"><a class="markdownIt-Anchor" href="#抽象类"></a> 抽象类</h2>
+<p>类似cpp里边的虚函数，其实就是父类单纯提供方法签名而不实现任何功能，即抽象方法的时候用的。</p>
+<p>这样就能构成多态。</p>
+<p>使用<code>abstract</code>修饰就完了，定义了抽象方法的类也要一样地修饰，这就是抽象类</p>
+<p><s>和cpp一样</s>抽象类无法实例化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所有这些东西的主要思想其实就是呃（抄的）</p>
+<ul>
+<li>上层代码只定义规范（例如：<code>abstract class Person</code>）；</li>
+<li>不需要子类就可以实现业务逻辑（正常编译）；</li>
+<li>具体的业务逻辑由不同的子类实现，调用者并不关心。</li>
+</ul>
+<hr />
+<h1 id="接口"><a class="markdownIt-Anchor" href="#接口"></a> 接口</h1>
+<h2 id="接口本质是更抽象的抽象类"><a class="markdownIt-Anchor" href="#接口本质是更抽象的抽象类"></a> 接口本质是更抽象的抽象类</h2>
+<p>如果一个抽象类没有字段，所有方法全部都是抽象方法，就可以用接口改写。</p>
+<p>使用<code>interface</code>声明，这里边的东西直接默认是<code>public abstract</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">String <span class="title">asdf</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么我们该如何使用这玩意呢</p>
+<p>使用<code>implements</code>实现,</p>
+<p>而且一个类可以实现多个接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Person</span>, <span class="title">Hello</span> </span>&#123; <span class="comment">// 实现了两个interface</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="有关接口继承"><a class="markdownIt-Anchor" href="#有关接口继承"></a> 有关接口继承</h2>
+<p>这玩意看着好复杂…</p>
+<p>一个<code>interface</code>可以继承自另一个<code>interface</code>。<code>interface</code>继承自<code>interface</code>使用<code>extends</code>，它相当于扩展了接口的方法。</p>
+<p>我们还可以定义<code>default</code>方法，</p>
+<p>这个相当于抽象类中有具体实现的那些方法。</p>
+<p>这样继承这个接口的所有子类也可以直接用这个方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> String <span class="title">asdf</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        asdf();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h1 id="一些杂项"><a class="markdownIt-Anchor" href="#一些杂项"></a> 一些杂项</h1>
+<h2 id="静态字段"><a class="markdownIt-Anchor" href="#静态字段"></a> 静态字段</h2>
+<p><strong>静态字段啥的跟cpp类里边的差不多，静态方法是可以直接用方法名调用，类似正常的函数，但是他显然不能访问实例的非静态字段</strong></p>
+<p>使用<code>static</code>修饰，懂得都懂（</p>
+<h2 id="包"><a class="markdownIt-Anchor" href="#包"></a> 包</h2>
+<p><s>类似命名空间</s></p>
+<blockquote>
+<p>Java定义了一种名字空间，称之为包：<code>package</code>。一个类总是属于某个包，类名（比如<code>Person</code>）只是一个简写，真正的完整类名是<code>包名.类名</code>。</p>
+</blockquote>
+<p>位于同一个包的类，可以访问包作用域的字段和方法。不用<code>public</code>、<code>protected</code>、<code>private</code>修饰的字段和方法就是包作用域。</p>
+<h2 id="import"><a class="markdownIt-Anchor" href="#import"></a> import</h2>
+<p>使用<code>import</code>语句，导入包中的类或者子包</p>
+<p>在写<code>import</code>的时候，可以使用<code>*</code>，表示把这个包下面的所有<code>class</code>都导入进来（但不包括子包的<code>class</code>）</p>
+<p>还有一种<code>import static</code>的语法，它可以导入可以导入一个类的静态字段和静态方法。</p>
+<h2 id="作用域"><a class="markdownIt-Anchor" href="#作用域"></a> 作用域</h2>
+<p>感觉不用写。</p>
+<p>一个是java支持嵌套类，内部的类也可以访问``private`</p>
+<h2 id="内部类"><a class="markdownIt-Anchor" href="#内部类"></a> 内部类</h2>
+<p>嵌套类，可以声明可以匿名</p>
+<p>在方法内部定义一个匿名类，这玩意其实就是一个东西继承自某个父类，然后重写一下里边的方法？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Runnable r = new 父类类名() &#123;</span><br><span class="line">    // 实现必要的抽象方法...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="classpath和jar"><a class="markdownIt-Anchor" href="#classpath和jar"></a> classpath和jar</h2>
+<p><s>不会</s></p>
+<p>jar包相当于zip包，其实就是把编译好的一堆<code>.class</code>文件打包到一起便于管理</p>
+<h2 id="模块"><a class="markdownIt-Anchor" href="#模块"></a> 模块</h2>
+<p>应该是依赖管理之类的，懒得看了</p>
+<hr />
+<h1 id="java的一些核心类"><a class="markdownIt-Anchor" href="#java的一些核心类"></a> JAVA的一些核心类</h1>
+<blockquote>
+<p>怎么都nm4点了，写完这段歇了（</p>
+</blockquote>
+<h2 id="string"><a class="markdownIt-Anchor" href="#string"></a> String</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">&quot;eee&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>首字母大写（</strong></p>
+<p><code>String</code>不可变</p>
+<p>由于是<strong>引用</strong>类型，我们要用<code>s1.equals(s2)</code>这种来判断是否相同</p>
+<p><code>equalsIgnoreCase()</code>方法忽略大小写比较</p>
+<p>一堆方法啊。。</p>
+<p>直接抄了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 是否包含子串:</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.contains(<span class="string">&quot;ll&quot;</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.indexOf(<span class="string">&quot;l&quot;</span>); <span class="comment">// 2</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.lastIndexOf(<span class="string">&quot;l&quot;</span>); <span class="comment">// 3</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.startsWith(<span class="string">&quot;He&quot;</span>); <span class="comment">// true</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.endsWith(<span class="string">&quot;lo&quot;</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.substring(<span class="number">2</span>); <span class="comment">// &quot;llo&quot;</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.substring(<span class="number">2</span>, <span class="number">4</span>); <span class="comment">//&quot;ll&quot;</span></span><br><span class="line"><span class="comment">// 使用trim()方法可以移除字符串首尾空白字符。空白字符包括空格，\t，\r，\n：</span></span><br><span class="line"><span class="string">&quot;  \tHello\r\n &quot;</span>.trim(); <span class="comment">// &quot;Hello&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;</span>.isEmpty(); <span class="comment">// true，因为字符串长度为0</span></span><br><span class="line"><span class="string">&quot;  &quot;</span>.isEmpty(); <span class="comment">// false，因为字符串长度不为0</span></span><br><span class="line"><span class="string">&quot;  \n&quot;</span>.isBlank(); <span class="comment">// true，因为只包含空白字符</span></span><br><span class="line"><span class="string">&quot; Hello &quot;</span>.isBlank(); <span class="comment">// false，因为包含非空白字符</span></span><br><span class="line"></span><br><span class="line">String s = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">s.replace(<span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;w&#x27;</span>); <span class="comment">// &quot;hewwo&quot;，所有字符&#x27;l&#x27;被替换为&#x27;w&#x27;</span></span><br><span class="line">s.replace(<span class="string">&quot;ll&quot;</span>, <span class="string">&quot;~~&quot;</span>); <span class="comment">// &quot;he~~o&quot;，所有子串&quot;ll&quot;被替换为&quot;~~&quot;</span></span><br><span class="line"></span><br><span class="line">replace还支持正则，没学过</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">String[] arr = &#123;<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>&#125;;</span><br><span class="line">String s = String.join(<span class="string">&quot;***&quot;</span>, arr); <span class="comment">// &quot;A***B***C&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">String.valueOf(<span class="number">123</span>); <span class="comment">// &quot;123&quot;</span></span><br><span class="line">String.valueOf(<span class="number">45.67</span>); <span class="comment">// &quot;45.67&quot;</span></span><br><span class="line">String.valueOf(<span class="keyword">true</span>); <span class="comment">// &quot;true&quot;</span></span><br><span class="line">String.valueOf(<span class="keyword">new</span> Object()); <span class="comment">// 类似java.lang.Object@636be97c</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span>[] cs = <span class="string">&quot;Hello&quot;</span>.toCharArray(); <span class="comment">// String -&gt; char[]</span></span><br><span class="line">String s = <span class="keyword">new</span> String(cs); <span class="comment">// char[] -&gt; String</span></span><br></pre></td></tr></table></figure>
+<p>还要byte字符串编码啥的，这玩意我感觉需要就火速百度就完了。</p>
+<h2 id="stringbuilder"><a class="markdownIt-Anchor" href="#stringbuilder"></a> StringBuilder</h2>
+<p>String可以直接用+拼接，但是效率不高。</p>
+<p>如果要一直添加字符的话可以用这个玩意</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="number">1024</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">    sb.append(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">    sb.append(i);</span><br><span class="line">&#125;</span><br><span class="line">String s = sb.toString();</span><br></pre></td></tr></table></figure>
+<p>支持链式操作，就是说可以一直<code>.append().append()...</code>之类的</p>
+<p>还有个<code>insert</code>方法，要给插入的index和内容</p>
+<p>不过链式操作只要函数结束之后返回对象引用就行了吧（</p>
+<p><s>谁叫这玩意啥都是引用</s></p>
+<h2 id="包装类型"><a class="markdownIt-Anchor" href="#包装类型"></a> 包装类型</h2>
+<p>意思就是类似<code>int</code>这种基本类型用类进行了包装，可以使用引用和一些奇奇怪怪的方法。</p>
+<p>进行一个抄</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">基本类型</th>
+<th style="text-align:left">对应的引用类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">java.lang.Boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">byte</td>
+<td style="text-align:left">java.lang.Byte</td>
+</tr>
+<tr>
+<td style="text-align:left">short</td>
+<td style="text-align:left">java.lang.Short</td>
+</tr>
+<tr>
+<td style="text-align:left">int</td>
+<td style="text-align:left">java.lang.Integer</td>
+</tr>
+<tr>
+<td style="text-align:left">long</td>
+<td style="text-align:left">java.lang.Long</td>
+</tr>
+<tr>
+<td style="text-align:left">float</td>
+<td style="text-align:left">java.lang.Float</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td style="text-align:left">java.lang.Double</td>
+</tr>
+<tr>
+<td style="text-align:left">char</td>
+<td style="text-align:left">java.lang.Character</td>
+</tr>
+</tbody>
+</table>
+<p>int的转换示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">100</span>;</span><br><span class="line">Integer n = Integer.valueOf(i);</span><br><span class="line"><span class="keyword">int</span> x = n.intValue();</span><br><span class="line">你甚至可以这么写</span><br><span class="line">Integer n = <span class="number">100</span>; <span class="comment">// 编译器自动使用Integer.valueOf(int)</span></span><br><span class="line"><span class="keyword">int</span> x = n; <span class="comment">// 编译器自动使用Integer.intValue()</span></span><br></pre></td></tr></table></figure>
+<p>很显然这个<code>Integer.valueOf(i)</code>是静态方法，而且这玩意实现有优化，比<code>new Integer(i)</code>效率更高，因为他返回给引用的可能是以前就已经存在的实例</p>
+<p>当然，这些B东西都是不可更改的。。</p>
+<p>静态方法<code>parseInt()</code>可以把字符串解析成一个整数</p>
+<h2 id="枚举类"><a class="markdownIt-Anchor" href="#枚举类"></a> 枚举类</h2>
+<p>例如我要定义周一到周日这7天，而且我不想让这7天以外的符号和他进行操作，就可以用<code>enum</code>关键字声明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Weekday</span> </span>&#123;</span><br><span class="line">    SUN, MON, TUE, WED, THU, FRI, SAT;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">本质来说感觉是这样，别问为啥例子变了，我也不知道</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> <span class="keyword">extends</span> <span class="title">Enum</span> </span>&#123; <span class="comment">// 继承自Enum，标记为final class</span></span><br><span class="line">    <span class="comment">// 每个实例均为全局唯一:</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Color RED = <span class="keyword">new</span> Color();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Color GREEN = <span class="keyword">new</span> Color();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Color BLUE = <span class="keyword">new</span> Color();</span><br><span class="line">    <span class="comment">// private构造方法，确保外部无法调用new操作符:</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我个人感觉这些其实就是抽象符号，而且拥有<code>static final</code>的属性</p>
+<p>这样就不会有类型外的值和非枚举类内的值相互比较了</p>
+<p>因为有<code>static</code>的属性，我们显然可以用<code>==</code>进行比较</p>
+<p>有方法<code>name()</code>返回常量名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = Weekday.SUN.name(); <span class="comment">// &quot;SUN&quot;</span></span><br></pre></td></tr></table></figure>
+<p><code>ordinal()</code>返回定义的常量的顺序，从0开始计数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = Weekday.MON.ordinal(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>既然这玩意本质是类，我们也可以在里边改写构造方法，给它加上一些值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Weekday</span> </span>&#123;</span><br><span class="line">    MON(<span class="number">1</span>), TUE(<span class="number">2</span>), WED(<span class="number">3</span>), THU(<span class="number">4</span>), FRI(<span class="number">5</span>), SAT(<span class="number">6</span>), SUN(<span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> dayValue;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Weekday</span><span class="params">(<span class="keyword">int</span> dayValue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.dayValue = dayValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们可以访问引用的<code>daValue</code>值获得信息。。</p>
+<h2 id="记录类"><a class="markdownIt-Anchor" href="#记录类"></a> 记录类</h2>
+<p>用来记录数据的不变类，写的更方便</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> record <span class="title">A</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>可以改写构造方法加上判断</p>
+<h2 id="biginteger"><a class="markdownIt-Anchor" href="#biginteger"></a> BigInteger</h2>
+<p>高精度，用它给你的方法就完了。</p>
+<p>实例化的时候要用字符串</p>
+<h2 id="bigdecimal"><a class="markdownIt-Anchor" href="#bigdecimal"></a> BigDecimal</h2>
+<p>和上边那个差不多呃</p>
+<blockquote>
+<p>通过<code>BigDecimal</code>的<code>stripTrailingZeros()</code>方法，可以将一个<code>BigDecimal</code>格式化为一个相等的，但去掉了末尾0的<code>BigDecimal</code></p>
+</blockquote>
+<h2 id="工具类"><a class="markdownIt-Anchor" href="#工具类"></a> 工具类</h2>
+<ul>
+<li>Math：数学计算</li>
+<li>Random：生成伪随机数</li>
+<li>SecureRandom：生成安全的随机数</li>
+</ul>
+<p>呃这个感觉没啥好说的</p>
+<h3 id="math"><a class="markdownIt-Anchor" href="#math"></a> Math</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Math.abs(-<span class="number">100</span>); <span class="comment">// 100</span></span><br><span class="line">Math.abs(-<span class="number">7.8</span>); <span class="comment">// 7.8</span></span><br><span class="line"></span><br><span class="line">Math.max(<span class="number">100</span>, <span class="number">99</span>); <span class="comment">// 100</span></span><br><span class="line">Math.min(<span class="number">1.2</span>, <span class="number">2.3</span>); <span class="comment">// 1.2</span></span><br><span class="line"></span><br><span class="line">Math.pow(<span class="number">2</span>, <span class="number">10</span>); <span class="comment">// 2的10次方=1024</span></span><br><span class="line">Math.sqrt(<span class="number">2</span>); <span class="comment">// 1.414...</span></span><br><span class="line">Math.exp(<span class="number">2</span>); <span class="comment">// 7.389...</span></span><br><span class="line">Math.log(<span class="number">4</span>); <span class="comment">// 1.386...</span></span><br><span class="line">Math.log10(<span class="number">100</span>); <span class="comment">// 2</span></span><br><span class="line">Math.sin(<span class="number">3.14</span>); <span class="comment">// 0.00159...</span></span><br><span class="line">Math.cos(<span class="number">3.14</span>); <span class="comment">// -0.9999...</span></span><br><span class="line">Math.tan(<span class="number">3.14</span>); <span class="comment">// -0.0015...</span></span><br><span class="line">Math.asin(<span class="number">1.0</span>); <span class="comment">// 1.57079...</span></span><br><span class="line">Math.acos(<span class="number">1.0</span>); <span class="comment">// 0.0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> pi = Math.PI; <span class="comment">// 3.14159...</span></span><br><span class="line"><span class="keyword">double</span> e = Math.E; <span class="comment">// 2.7182818...</span></span><br><span class="line">Math.sin(Math.PI / <span class="number">6</span>); <span class="comment">// sin(π/6) = 0.5</span></span><br><span class="line"><span class="number">0</span>-<span class="number">1</span></span><br><span class="line">Math.random(); <span class="comment">// 0.53907... 每次都不一样</span></span><br></pre></td></tr></table></figure>
+<h3 id="random"><a class="markdownIt-Anchor" href="#random"></a> Random</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Random r = <span class="keyword">new</span> Random(种子);</span><br><span class="line">r.nextInt(); <span class="comment">// 2071575453,每次都不一样</span></span><br><span class="line">r.nextInt(<span class="number">10</span>); <span class="comment">// 5,生成一个[0,10)之间的int</span></span><br><span class="line">r.nextLong(); <span class="comment">// 8811649292570369305,每次都不一样</span></span><br><span class="line">r.nextFloat(); <span class="comment">// 0.54335...生成一个[0,1)之间的float</span></span><br><span class="line">r.nextDouble(); <span class="comment">// 0.3716...生成一个[0,1)之间的double</span></span><br><span class="line">r.nextBytes();</span><br></pre></td></tr></table></figure>
+<h3 id="securerandom"><a class="markdownIt-Anchor" href="#securerandom"></a> SecureRandom</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SecureRandom sr = <span class="keyword">new</span> SecureRandom();</span><br></pre></td></tr></table></figure>
+<p>然后疯狂的用就完了</p>
+<hr />
+<p>DONE！！！！！</p>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%AD%E8%A8%80/">语言</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2022/05/29/04%E5%AD%A6%E4%B9%A0/%E9%80%9F%E9%80%9A%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/"><i class="fa fa-chevron-left">  </i><span>速通形式语言与自动机</span></a></div><div class="next-post pull-right"><a href="/2022/03/22/01%E6%88%96%E8%AE%B8%E6%98%AF%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%96%87%E6%A0%91/"><span>回文树</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == 'true';
+var verify = 'true' == 'true';
+var record_ip = 'false' == 'true';
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  recordIP:record_ip,
+  appId:'TLG7D021bQkJY7pS0cUfAT7O-gzGzoHsz',
+  appKey:'Q0dQbnm4Gv8bxSBCpfGwtcvG',
+  placeholder:'细说',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'7',
+  lang: 'zh-cn'
+})</script></div></div><footer class="footer-bg" style="background-image: url(/yui.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2023 By PopHirasawa</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">无聊的时候，为什么不看看轻音少女呢？</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div><script type="text/javascript" id="maid-script" src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js"></script><script>if (window.mermaid) {
+   var options = JSON.parse(document.getElementById('maid-script').getAttribute('mermaidoptioins'));
+   mermaid.initialize(options);
+ }</script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?version=2.9.0"></script><script src="/js/fancybox.js?version=2.9.0"></script><script src="/js/sidebar.js?version=2.9.0"></script><script src="/js/copy.js?version=2.9.0"></script><script src="/js/fireworks.js?version=2.9.0"></script><script src="/js/transition.js?version=2.9.0"></script><script src="/js/scroll.js?version=2.9.0"></script><script src="/js/head.js?version=2.9.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.4/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

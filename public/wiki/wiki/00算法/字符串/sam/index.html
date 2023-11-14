@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    
+    <title>后缀自动机 | PopHirasawa&#39;s wiki</title>
+    
+    
+        <meta name="keywords" content="SAM">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="这玩意就是SAM的原理以及基本板子了，大概，说不定再来一点套路总结吧  总的来说，这玩意拖的也太久了，一直说要学，然后狂摸不止，我 有罪！ 欸嘿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后缀自动机">
+<meta property="og:url" content="https://pophirasawa.top/wiki/wiki/00%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/sam/index.html">
+<meta property="og:site_name" content="PopHirasawa&#39;s wiki">
+<meta property="og:description" content="这玩意就是SAM的原理以及基本板子了，大概，说不定再来一点套路总结吧  总的来说，这玩意拖的也太久了，一直说要学，然后狂摸不止，我 有罪！ 欸嘿">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-19T18:08:36.000Z">
+<meta property="article:modified_time" content="2022-01-03T13:35:02.386Z">
+<meta property="article:author" content="PopHirasawa">
+<meta property="article:tag" content="SAM">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="PopHirasawa&#39;s wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/wiki/favicon.ico">
+    
+
+    
+<link rel="stylesheet" href="/wiki/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/wiki/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/wiki/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/wiki/css/style.css">
+
+    
+<script src="/wiki/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/wiki/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/wiki/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/wiki/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/wiki/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">PopHirasawa&#39;s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/wiki/">首页</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/wiki/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/wiki/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/wiki/about">关于</a>
+                
+                    <a class="main-nav-link" href="/wiki/../">回到博客</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/wiki/',
+        CONTENT_URL: '/wiki/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/wiki/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/../">回到博客</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            00算法
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DP
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/wiki/00%E7%AE%97%E6%B3%95/DP/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96dp/">单调队列优化多重背包</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            字符串
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/wiki/wiki/00%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/sam/">后缀自动机</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            数学
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/wiki/00%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/%E7%B1%BB&%E6%8B%93%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/">EXGCD</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            数据结构
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/wiki/00%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BB%B4%E6%8A%A4%E5%8C%BA%E9%97%B4%E4%BC%97%E6%95%B0/">维护区间众数</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01学习
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            组合数学
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/wiki/01%E5%AD%A6%E4%B9%A0/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86/">鸽巢原理</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02戏言
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/wiki/02%E6%88%8F%E8%A8%80/%E8%A7%86%E9%9B%AA%E7%97%87/">视雪症</a></li>  <li class="file"><a href="/wiki/wiki/02%E6%88%8F%E8%A8%80/God%20was%20a%20girl/">God was a girl</a></li>  <li class="file"><a href="/wiki/wiki/02%E6%88%8F%E8%A8%80/%E6%98%A5%E5%A4%A9%E6%98%A5%E6%97%A5%E6%98%A5%E8%89%B2%E5%A5%BD%E9%A5%BF/">春天春日春色好饿</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/wiki/Homepage/">0X00</a></li>  <li class="file"><a href="/wiki/wiki/aaa/">aaa</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>归档</span></h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/wiki/archives/2023/04/">四月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/wiki/archives/2022/04/">四月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/wiki/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/wiki/archives/2022/01/">一月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/wiki/archives/2021/11/">十一月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/wiki/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-00算法/字符串/sam" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/00%E7%AE%97%E6%B3%95/">00算法</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/wiki/categories/00%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/wiki/tags/SAM/" rel="tag">SAM</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/wiki/00%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/sam/">
+            <time datetime="2021-11-19T18:08:36.000Z" itemprop="datePublished">2021-11-20</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            后缀自动机
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <blockquote>
+<p>这玩意就是SAM的原理以及基本板子了，大概，说不定再来一点套路总结吧</p>
+</blockquote>
+<p>总的来说，这玩意拖的也太久了，一直说要学，然后狂摸不止，我 <strong>有罪</strong>！</p>
+<p>欸嘿</p>
+<span id="more"></span>
+<h1 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h1>
+<p>首先后缀自动机</p>
+<ul>
+<li>可以包括给定字符串的所有子串</li>
+<li>O(n)</li>
+<li><strong>是自动机</strong></li>
+</ul>
+<h2 id="一些定义"><a class="markdownIt-Anchor" href="#一些定义"></a> 一些定义</h2>
+<p><strong>endpos</strong></p>
+<blockquote>
+<p>字符串s的一个子串t，endpos(t)为s中t的<code>所有</code>结束位置构成的集合</p>
+</blockquote>
+<p><strong>SAM是一个最小的DFA</strong></p>
+<blockquote>
+<ul>
+<li>有向无环图</li>
+<li>节点是状态，边是转移</li>
+<li>转移是一些字母</li>
+<li>从源点出发到终止状态所有转移连起来的字符串t是字符串s的一个后缀</li>
+<li>SAM的节点最小</li>
+</ul>
+</blockquote>
+<p>那么如果endpos(t1)=endpos(t2)，那么他们就在一个<code>等价类</code>中</p>
+<h2 id="一堆引理"><a class="markdownIt-Anchor" href="#一堆引理"></a> 一堆引理</h2>
+<ul>
+<li>两个非空子串u，w  (|u|&lt;=|w|)  endpos相同，只有u在s中每次出现都是以w的后缀出现的</li>
+<li>那么就可以推出来： 考虑u，w  (|u|&lt;=|w|) 只有2种可能
+<ul>
+<li>endpos(u),endpos(w)不相交</li>
+<li>endpos(w)是endpos(u)的<strong>子集</strong></li>
+</ul>
+</li>
+<li>一个endpos等价类里边，所有子串长度不同，而且差值为1，正好覆盖区间</li>
+</ul>
+<p><strong>然后就有我们的后缀link</strong></p>
+<blockquote>
+<p>对于一个不是源点的状态v，然后考虑这个endpos等价类中最长的字符串w，其他的就是w后缀了捏</p>
+<p>然后我们有</p>
+<ul>
+<li>w开始，有一个连续区间长度的后缀也都是这个等价类里边的玩意，定义最长的一个不是等价类里边的后缀为t，把v的后缀link到t上</li>
+</ul>
+</blockquote>
+<p>显然最后是link到源点的</p>
+<p>最后这玩意就构成了一个<strong>树</strong></p>
+<p>然后我们就可以开始算法本身了捏</p>
+<hr>
+<h1 id="算法实现"><a class="markdownIt-Anchor" href="#算法实现"></a> 算法实现</h1>
+<blockquote>
+<p>哥们看不懂捏</p>
+</blockquote>
+<p>首先说重点</p>
+<p><strong>后缀link树和后缀自动机共同相同的节点，不同的只是转移的边不同</strong></p>
+<h2 id="大概步骤"><a class="markdownIt-Anchor" href="#大概步骤"></a> 大概步骤</h2>
+<p>首先，这个是在线算法，我们每次往自动机里加入一个字符，然后维护SAM</p>
+<p><strong>首先定义初始状态</strong></p>
+<p>这个点编号0，len=0，fa=0</p>
+<p>然后我们就能挨个加入字符c了</p>
+<p>有以下流程</p>
+<blockquote>
+<p>首先我们加入了一个新字符，那么新串对应的的endpos是新的长度，以前不存在，因此我们新建一个状态<strong>np</strong>，之前整个旧串对应的状态记为<strong>p</strong>，很显然len(q)=len§+1</p>
+</blockquote>
+<p>然后对于新加入的字符c，我们进行以下操作</p>
+<blockquote>
+<p>如果<strong>p</strong>没有一个字符c的出边(这里是自动机的边)，就在<code>link树</code>上到他的父节点，也就是后缀link的点，一直循环直到<strong>p</strong>到达<strong>初始状态</strong>的节点或者有一个字符c的出边</p>
+</blockquote>
+<p>这个操作其实是压缩遍历旧串的所有后缀x，然后看是否存在一个x+c在旧串种就存在了，因为引理中已经提到，每个状态link到的节点都是当前状态的后缀，所有我们从<strong>p</strong>上来肯定是旧串的后缀了捏</p>
+<p>途中我们把经过每个没有c出边的<strong>p</strong>都连一个c到<strong>np</strong></p>
+<p>然后我们就有3种情况</p>
+<h4 id="case-1"><a class="markdownIt-Anchor" href="#case-1"></a> Case 1</h4>
+<blockquote>
+<p><strong>p</strong>到初始状态都没有c的出边</p>
+</blockquote>
+<p><strong>np</strong>状态直接link到初始状态</p>
+<h3 id="case-2"><a class="markdownIt-Anchor" href="#case-2"></a> Case 2</h3>
+<blockquote>
+<p>找到了一个<strong>p</strong>，有c的出边，到达一个新状态<strong>q</strong>，且<strong>len( q )=len( p )+1</strong></p>
+</blockquote>
+<p>首先我们知道<strong>p</strong>是旧串后缀，<strong>q</strong>是<strong>p</strong>的字符串+c，因此<strong>q</strong>是新串的后缀，那么我们理所当然把<strong>np</strong> link 到<strong>q</strong>上就行了</p>
+<h3 id="case-3"><a class="markdownIt-Anchor" href="#case-3"></a> Case 3</h3>
+<blockquote>
+<p>和case2差不多，但是找到的<strong>p</strong>出边到达的<strong>q</strong>没有<strong>len( q )=len( p )+1</strong></p>
+<p>或者说，<strong>len( q )&gt;len( q )+1</strong></p>
+</blockquote>
+<p>这时候我们要把q拆成两个点，是新串后缀的和不是的，然后link就行</p>
+<p>具体来说，定义一个新点<strong>nq</strong>，len=len§+1,出边转移和<strong>q</strong>相同，link 到<strong>p</strong>上，然后<strong>np</strong>和<strong>q</strong>都link到<strong>nq</strong>上</p>
+<p>最后稍微更新下转移边，<strong>p</strong>往上走，把所有<strong>p</strong> link 到<strong>q</strong>的转移 link 到<strong>nq</strong>上就行了</p>
+<hr>
+<p>最后稍微提一下如何计算每个状态的endpos大小</p>
+<p>设想一下，我们每次加入一个字符c，肯定会出现一个新的endpos，而且他能够对往上走到源点经过的所有节点都产生影响，也就是说我们使用一个数组f[i]来统计endpos，加入新字符时让f[np]=1,最后跑一下dfs，<strong>f[i]=f[i]+sum(f[i所有的儿子])</strong> 即可捏</p>
+<p>或者把sam的点按len排序(可以用桶排) 从大到小更新 **f[sam[i].fa]+=f[i]**也行</p>
+<hr>
+<h1 id="code"><a class="markdownIt-Anchor" href="#code"></a> code</h1>
+<p>先贴一手毛的板子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">NODE</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> ch[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span> len,fa;</span><br><span class="line">    <span class="built_in">NODE</span>()&#123;<span class="built_in">memset</span>(ch,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(ch));len=<span class="number">0</span>;&#125;</span><br><span class="line">&#125;sam[MAXN&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> lst=<span class="number">1</span>,tot=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p=lst;<span class="keyword">int</span> np=lst=++tot;</span><br><span class="line">    sam[np].len=sam[p].len+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;p&amp;&amp;!sam[p].ch[c];p=sam[p].fa)sam[p].ch[c]=np;</span><br><span class="line">    <span class="keyword">if</span>(!p)sam[np].fa=<span class="number">1</span>;<span class="comment">//以上为case 1</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> q=sam[p].ch[c];</span><br><span class="line">        <span class="keyword">if</span>(sam[q].len==sam[p].len+<span class="number">1</span>)sam[np].fa=q;<span class="comment">//以上为case 2</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> nq=++tot;sam[nq]=sam[q];</span><br><span class="line">            sam[nq].len=sam[p].len+<span class="number">1</span>;</span><br><span class="line">            sam[q].fa=sam[np].fa=nq; </span><br><span class="line">            <span class="keyword">for</span>(;p&amp;&amp;sam[p].ch[c]==q;p=sam[p].fa)sam[p].ch[c]=nq;<span class="comment">//以上为case 3</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>暂时先写这么多，乏了，早上写一手题以及用法吧</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/wiki/Homepage/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    0X00
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/wiki/00%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BB%B4%E6%8A%A4%E5%8C%BA%E9%97%B4%E4%BC%97%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">维护区间众数</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            PopHirasawa &copy; 2023 
+            <a rel="external nofollow noopener noreferrer" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/wiki/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/wiki/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/wiki/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/wiki/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/wiki/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/wiki/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/wiki/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/wiki/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/wiki/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/wiki/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/wiki/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
