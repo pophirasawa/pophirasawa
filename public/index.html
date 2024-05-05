@@ -48,7 +48,7 @@
 <li>
 <p><code>HEAD</code>，指向某个提交后，用HEAD作为当前节点名的引用</p>
 </li>
-</ul></div><a class="more" href="/2024/05/05/04%E5%AD%A6%E4%B9%A0/git/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2024/04/12/04%E5%AD%A6%E4%B9%A0/ACSIPredictionSchemeforSatellite-Terrestrial%20/">论文阅读笔记2024.4.12</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2024-04-12</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BF%A1%E9%81%93%E9%A2%84%E6%B5%8B/">信道预测</a></span><div class="content"><h1 id="a-csi-prediction-scheme-for-satellite-terrestrial-networks"><a class="markdownIt-Anchor" href="#a-csi-prediction-scheme-for-satellite-terrestrial-networks"></a> A CSI Prediction Scheme for Satellite-Terrestrial Networks</h1>
+</ul></div><a class="more" href="/2024/05/05/04%E5%AD%A6%E4%B9%A0/git/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2024/04/12/04%E5%AD%A6%E4%B9%A0/ACSIPredictionSchemeforSatellite-Terrestrial/">论文阅读笔记2024.4.12</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2024-04-12</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E4%BF%A1%E9%81%93%E9%A2%84%E6%B5%8B/">信道预测</a></span><div class="content"><h1 id="a-csi-prediction-scheme-for-satellite-terrestrial-networks"><a class="markdownIt-Anchor" href="#a-csi-prediction-scheme-for-satellite-terrestrial-networks"></a> A CSI Prediction Scheme for Satellite-Terrestrial Networks</h1>
 <p><strong>本文分析了CSI随仰角改变的变化趋势。使用GRU进行时序预测，GRU性能与LSTM类似，且计算性能开销低于LSTM</strong></p>
 <h2 id="问题无附加信息的情况下预测csi"><a class="markdownIt-Anchor" href="#问题无附加信息的情况下预测csi"></a> 问题：无附加信息的情况下预测CSI</h2>
 <p>物联网设备CSI预测问题:</p>
@@ -62,7 +62,22 @@
 <li>
 <p>低地轨道的上升方和下降方的仰角和相对位置具有不同的时间相关性。低地轨道上升侧和下降侧的CSI具有不同的时间相关性</p>
 </li>
-</ul></div><a class="more" href="/2024/04/12/04%E5%AD%A6%E4%B9%A0/ACSIPredictionSchemeforSatellite-Terrestrial%20/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/11/14/04%E5%AD%A6%E4%B9%A0/Summary/">近期总结-离散情况下的SAC</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-11-14</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/DRL/">DRL</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/RL/">RL</a></span><div class="content"><p>之前花了点时间研究离散动作空间下的SAC算法，把学到的一些东西总结一下。。</p></div><a class="more" href="/2023/11/14/04%E5%AD%A6%E4%B9%A0/Summary/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/10/29/04%E5%AD%A6%E4%B9%A0/Gumbel%20Softmax/">重参数化与Gumbel-Softmax</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-10-29</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/DRL/">DRL</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/RL/">RL</a></span><div class="content"><blockquote>
+</ul>
+<p>Relatedworks:</p>
+<ul>
+<li>基于参数的方法：
+<ul>
+<li>参数模型<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，至少1999年就有。15年有适用于MIMO<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。将预测问题简化为参数估计问题。然而在卫星场景参数失效快</li>
+<li>统计方法，自回归模型</li>
+</ul>
+</li>
+<li>无参数方法：
+<ul>
+<li>LSTM，工作<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>将<strong>CSI差值</strong>作为输入进行预测</li>
+<li>ESN<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>，开销相较于RNN更低。该工作考虑莱斯信道，不适用于NLoS</li>
+</ul>
+</li>
+</ul></div><a class="more" href="/2024/04/12/04%E5%AD%A6%E4%B9%A0/ACSIPredictionSchemeforSatellite-Terrestrial/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/11/14/04%E5%AD%A6%E4%B9%A0/Summary/">近期总结-离散情况下的SAC</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-11-14</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/DRL/">DRL</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/RL/">RL</a></span><div class="content"><p>之前花了点时间研究离散动作空间下的SAC算法，把学到的一些东西总结一下。。</p></div><a class="more" href="/2023/11/14/04%E5%AD%A6%E4%B9%A0/Summary/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/10/29/04%E5%AD%A6%E4%B9%A0/Gumbel%20Softmax/">重参数化与Gumbel-Softmax</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-10-29</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/DRL/">DRL</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/RL/">RL</a></span><div class="content"><blockquote>
 <p>研究SAC的时候没搞太懂，花了好几天研究这个问题，记录一下</p>
 </blockquote>
 <p>参考：</p>

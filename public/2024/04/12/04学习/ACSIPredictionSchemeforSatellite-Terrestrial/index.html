@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;default&quot;]"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="论文阅读笔记2024.4.12"><meta name="keywords" content="信道预测"><meta name="author" content="PopHirasawa"><meta name="copyright" content="PopHirasawa"><title>论文阅读笔记2024.4.12 | PopHirasawa's Blog</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=2.9.0"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css?version=2.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '5.4.2'
+} </script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="PopHirasawa's Blog" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#a-csi-prediction-scheme-for-satellite-terrestrial-networks"><span class="toc-number">1.</span> <span class="toc-text"> A CSI Prediction Scheme for Satellite-Terrestrial Networks</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%97%A0%E9%99%84%E5%8A%A0%E4%BF%A1%E6%81%AF%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E9%A2%84%E6%B5%8Bcsi"><span class="toc-number">1.1.</span> <span class="toc-text"> 问题：无附加信息的情况下预测CSI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gru%E4%BF%A1%E9%81%93%E9%A2%84%E6%B5%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> GRU信道预测</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3gpp-new-radio-precoding-in-ngso-satellites-channel-prediction-and-dynamic-resource-allocation"><span class="toc-number">2.</span> <span class="toc-text"> 3GPP New Radio Precoding in NGSO Satellites: Channel Prediction and Dynamic Resource Allocation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%95%B0%E5%AD%97%E9%80%8F%E6%98%8E%E8%BD%BD%E8%8D%B7%E4%B8%8B%E7%9A%84csi%E9%A2%84%E6%B5%8B%E9%A2%84%E7%BC%96%E7%A0%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.</span> <span class="toc-text"> 问题：数字透明载荷下的CSI预测+预编码设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8zf%E5%90%AF%E5%8F%91%E5%BC%8F%E6%90%9C%E7%B4%A2"><span class="toc-number">2.2.</span> <span class="toc-text"> 卡尔曼滤波器+ZF&#x2F;启发式搜索</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/HTT.jpg"></div><div class="author-info__name text-center">PopHirasawa</div><div class="author-info__description text-center"></div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/pophirasawa">也许是GitHub</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">27</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">18</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">15</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">My Friends</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://jnn.icu/">诺诺诺诺诺诺诺宝's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://mushroom323.github.io/">Mushroom's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://heyewuyue1.github.io/">何夜舞月's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://ibukifalling.github.io/">茯苓's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://fohunbrella.github.io/">Unbrella's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.banned.top/">Bangg's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.tonyzhao.xyz/">TonyZhao's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://wa-automaton.github.io/">WA_自动机's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://taropie0224.github.io/">香芋派Taro's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://0xe9.me/">山荷叶's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://sherroe.github.io/">鱼籽's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://kafudolly.github.io/">mhy's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://lanweifrj.github.io/">石上's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://mindhunter114.github.io/">万叶's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://ruayiii.github.io/">RuaYiii's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://poriahcorvus.github.io/">Poria's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://xylog.cn/">晓羽's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://turleing.github.io/">天泽龟's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://jungle430.github.io/">Jungle's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://junpickle.github.io">anda's Blog</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://scientificw.github.io/">泽村睿's Blog</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/yui.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">PopHirasawa's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/wiki/">这里可以转到Wiki哦</a><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/links">Links</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">论文阅读笔记2024.4.12</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2024-04-12</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">1.1k</span><span class="post-meta__separator">|</span><span>Reading time: 4 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="a-csi-prediction-scheme-for-satellite-terrestrial-networks"><a class="markdownIt-Anchor" href="#a-csi-prediction-scheme-for-satellite-terrestrial-networks"></a> A CSI Prediction Scheme for Satellite-Terrestrial Networks</h1>
+<p><strong>本文分析了CSI随仰角改变的变化趋势。使用GRU进行时序预测，GRU性能与LSTM类似，且计算性能开销低于LSTM</strong></p>
+<h2 id="问题无附加信息的情况下预测csi"><a class="markdownIt-Anchor" href="#问题无附加信息的情况下预测csi"></a> 问题：无附加信息的情况下预测CSI</h2>
+<p>物联网设备CSI预测问题:</p>
+<ul>
+<li>
+<p>在无附加信息(地面设备位置和低地轨道星历表等)的情况下预测CSI</p>
+</li>
+<li>
+<p>对计算复杂度存在限制</p>
+</li>
+<li>
+<p>低地轨道的上升方和下降方的仰角和相对位置具有不同的时间相关性。低地轨道上升侧和下降侧的CSI具有不同的时间相关性</p>
+</li>
+</ul>
+<p>Relatedworks:</p>
+<ul>
+<li>基于参数的方法：
+<ul>
+<li>参数模型<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，至少1999年就有。15年有适用于MIMO<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。将预测问题简化为参数估计问题。然而在卫星场景参数失效快</li>
+<li>统计方法，自回归模型</li>
+</ul>
+</li>
+<li>无参数方法：
+<ul>
+<li>LSTM，工作<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>将<strong>CSI差值</strong>作为输入进行预测</li>
+<li>ESN<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>，开销相较于RNN更低。该工作考虑莱斯信道，不适用于NLoS</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+<h2 id="gru信道预测"><a class="markdownIt-Anchor" href="#gru信道预测"></a> GRU信道预测</h2>
+<p>建模：考虑了自由空间衰落、阴影衰落、小尺度衰落</p>
+<ul>
+<li>阴影衰落和小尺度衰落都与<strong>仰角</strong>相关</li>
+<li>LoS概率基于3GPP，38.811</li>
+</ul>
+<p><strong>分析了CSI值随仰角和UE运动的一系列变化趋势</strong></p>
+<p>CSI实部虚部符号对有（+，+）、（+，-）、（-，+）和（-，-）四种状态</p>
+<p>结论：对于移动 UE，CSI 符号对、CSI 绝对值的长期趋势及其移动方向有助于预测低地轨道仰角的时间相关性。</p>
+<p>网络：输入过去一段时间的CSI序列，<strong>直接预测之后第P个slot的CSI</strong></p>
+<ul>
+<li>有四个GRU网络，对应不同的CSI符号对，根据输入CSI的均值符号对确定使用的GRU网络</li>
+<li>使用DropOut，每个GRU都用所有的历史CSI序列作为输入</li>
+<li><strong>跟使用了轨道仰角作为额外输入的网络进行对比，性能相似</strong>
+<ul>
+<li>做了CSI测量误差对模型性能影响的分析</li>
+</ul>
+</li>
+<li>Baseline<sup class="footnote-ref"><a href="#fn3" id="fnref3:1">[3:1]</a></sup></li>
+</ul>
+<h1 id="3gpp-new-radio-precoding-in-ngso-satellites-channel-prediction-and-dynamic-resource-allocation"><a class="markdownIt-Anchor" href="#3gpp-new-radio-precoding-in-ngso-satellites-channel-prediction-and-dynamic-resource-allocation"></a> 3GPP New Radio Precoding in NGSO Satellites: Channel Prediction and Dynamic Resource Allocation</h1>
+<p><strong>用卡尔曼滤波器做信道预测，然后分别研究了有无码本的联合带宽分配的预编码方法</strong></p>
+<h2 id="问题数字透明载荷下的csi预测预编码设计"><a class="markdownIt-Anchor" href="#问题数字透明载荷下的csi预测预编码设计"></a> 问题：数字透明载荷下的CSI预测+预编码设计</h2>
+<p>flexible multi-beam satellites</p>
+<ul>
+<li>可完全控制点波束覆盖、频率分配和发射功率</li>
+<li>预编码设计联合带宽和功率分配</li>
+<li>CSI预测必要</li>
+</ul>
+<p>Relatedworks:</p>
+<ul>
+<li>
+<p>基于digital transparent payload灵活性能的一些研究。之前读过的深度学习的预测+混合波束成形<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>,</p>
+</li>
+<li>
+<p>利用satellite-based terrestrial multiconnectivity(MC)的干扰管理<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>和频谱共享方法<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup></p>
+</li>
+<li>
+<p>基于码本的预编码方法，用于减少信令开销<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup><sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup></p>
+</li>
+</ul>
+<h2 id="卡尔曼滤波器zf启发式搜索"><a class="markdownIt-Anchor" href="#卡尔曼滤波器zf启发式搜索"></a> 卡尔曼滤波器+ZF/启发式搜索</h2>
+<p>建模：</p>
+<ul>
+<li>对当前波束服务的K个用户分为G=K/N组，组内空间复用，组间应用不同正交频段</li>
+<li>N不大于4(3GPP基于码本预编码的建议)</li>
+<li>给定<strong>带宽和功率</strong>约束最大化和速率</li>
+</ul>
+<p>CSI预测：Kalman滤波器</p>
+<ul>
+<li>对比：信道估计、移动平均</li>
+</ul>
+<p>联合预编码：码本/无码本对应不同信令开销</p>
+<ul>
+<li>无码本：TM8和TM9，zeroforcing改变问题为功率和带宽分配，问题为凸函数直接进行优化</li>
+<li>有码本：TM5和TM8，启发式搜索对应码本组合</li>
+</ul>
+<p>仿真部分有性能随信道相关性的变化</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>J. B. Andersen, J. Jensen, S. H. Jensen, and F. Frederiksen, “Prediction of future fading based on past measurements,” in Proc. Gateway 21st Century Commun. Village, vol. 1, 1999, pp. 151–155. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>R. O. Adeogun, P. D. Teal, and P. A. Dmochowski, “Extrapolation of MIMO mobile-to-mobile wireless channels using parametric-modelbased prediction,” IEEE Trans. Veh. Technol., vol. 64, no. 10, pp. 4487–4498, Oct. 2015. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Y. Zhu, X. Dong, and T. Lu, “An adaptive and parameter-free recurrent neural structure for wireless channel prediction,” IEEE Trans. Commun., vol. 67, no. 11, pp. 8086–8096, Nov. 2019. <a href="#fnref3" class="footnote-backref">↩︎</a> <a href="#fnref3:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Y. Zhao, H. Gao, N. C. Beaulieu, Z. Chen, and H. Ji, “Echo state network for fast channel prediction in Ricean fading scenarios,” IEEE Commun. Lett., vol. 21, no. 3, pp. 672–675, Mar. 2017. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>Y. Zhang, A. Liu, P. Li, and S. Jiang, “Deep Learning (DL)-Based Channel Prediction and Hybrid Beamforming for LEO Satellite Massive MIMO System,” in IEEE Internet of Things Journal, vol. 9, no. 23, pp. 23705-23715, Dec. 2022 <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>N. Cassiau et al., “5G-ALLSTAR: Beyond 5G Satellite-Terrestrial MultiConnectivity,” in Proc. Joint European Conference on Networks andCommunications, 2022, pp. 148–153. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>N. Cassiau et al., “Satellite and Terrestrial Multi-Connectivity for 5G: Making Spectrum Sharing Possible,” in Proc. IEEE Wireless Commun.Netw. Conf., 2020, pp. 1-6 <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>M. Meng et al., “BeamRaster: A Practical Fast Massive MU-MIMO System With Pre-Computed Precoders,” in IEEE Transactions on Mobile Computing, vol. 18, no. 5, pp. 1014-1027, May 2019 <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>E. Sourour, “Codebook-based precoding for generalized spatial modulation with diversity,” in EURASIP J Wireless Com Network, 2019, 229(2019). <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BF%A1%E9%81%93%E9%A2%84%E6%B5%8B/">信道预测</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2024/05/05/04%E5%AD%A6%E4%B9%A0/git/"><i class="fa fa-chevron-left">  </i><span>Git大学习</span></a></div><div class="next-post pull-right"><a href="/2023/11/14/04%E5%AD%A6%E4%B9%A0/Summary/"><span>近期总结-离散情况下的SAC</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == 'true';
+var verify = 'true' == 'true';
+var record_ip = 'false' == 'true';
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  recordIP:record_ip,
+  appId:'TLG7D021bQkJY7pS0cUfAT7O-gzGzoHsz',
+  appKey:'Q0dQbnm4Gv8bxSBCpfGwtcvG',
+  placeholder:'细说',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'7',
+  lang: 'zh-cn'
+})</script></div></div><footer class="footer-bg" style="background-image: url(/yui.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2024 By PopHirasawa</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">无聊的时候，为什么不看看轻音少女呢？</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div><script type="text/javascript" id="maid-script" src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js"></script><script>if (window.mermaid) {
+   var options = JSON.parse(document.getElementById('maid-script').getAttribute('mermaidoptioins'));
+   mermaid.initialize(options);
+ }</script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?version=2.9.0"></script><script src="/js/fancybox.js?version=2.9.0"></script><script src="/js/sidebar.js?version=2.9.0"></script><script src="/js/copy.js?version=2.9.0"></script><script src="/js/fireworks.js?version=2.9.0"></script><script src="/js/transition.js?version=2.9.0"></script><script src="/js/scroll.js?version=2.9.0"></script><script src="/js/head.js?version=2.9.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.4/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
