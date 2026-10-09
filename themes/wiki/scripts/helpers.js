@@ -76,14 +76,14 @@ hexo.extend.helper.register('wiki_breadcrumbs', function (post) {
 });
 hexo.extend.helper.register('wiki_tree', function (currentSlug) {
   const data = structure();
-  function render(nodes, depth = 0) {
+  function render(nodes) {
     return '<ul class="directory-list">' + nodes.map(node => {
       if (node.kind === 'note') {
         const active = node.slug === currentSlug;
         return `<li class="directory-note"><a href="${escapeHTML(url(node.post.path))}"${active ? ' class="is-current" aria-current="page"' : ''}>${icon('note')}<span>${escapeHTML(node.label)}</span></a></li>`;
       }
       const active = node.posts.some(post => post.slug === currentSlug);
-      return `<li class="directory-folder"><details${depth === 0 || active ? ' open' : ''}><summary>${icon('chevron')}${icon('folder')}<span>${escapeHTML(node.label)}</span><span class="folder-count">${node.posts.length}</span></summary>${render(node.children, depth + 1)}</details></li>`;
+      return `<li class="directory-folder"><details${active ? ' open' : ''}><summary>${icon('chevron')}${icon('folder')}<span>${escapeHTML(node.label)}</span><span class="folder-count">${node.posts.length}</span></summary>${render(node.children)}</details></li>`;
     }).join('') + '</ul>';
   }
   return render(data.groups) + (data.loose.length ? '<div class="sidebar-section-label">其他笔记</div>' + render(data.loose) : '');
