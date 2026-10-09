@@ -5,6 +5,7 @@
   "scripts": {
     "build": "node tools/build.cjs",
     "check": "node tools/check.cjs",
+    "test": "node --test tools/check-wiki.test.cjs",
     "clean": "node tools/clean.cjs",
     "server": "node tools/serve.cjs",
     "new": "hexo new",

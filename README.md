@@ -12,7 +12,7 @@ npm run server
 
 打开 `http://localhost:4000/` 和 `http://localhost:4000/wiki/`。修改文章后重新运行 `npm run build`，再刷新页面。预览服务器只监听本机；关闭时按 Ctrl+C。
 
-`npm run build` 会依次清理并生成博客、清理并生成 Wiki、复制固定版本的 JS/CSS/字体、检查生成结果。任何主题或插件加载错误都会使构建失败。直接运行 `hexo g` 只会生成博客，也不会复制浏览器依赖，因此发布前使用统一命令。
+`npm run build` 会依次清理并生成博客、清理并生成 Wiki、复制固定版本的 JS/CSS/字体、检查生成结果。新版 Wiki 的日夜主题、动效脚本和全文搜索索引也会一起生成。检查包括主题脚本语法、生成资源与主题源码是否一致、CSS/JS 缓存版本、日夜初始化顺序，以及搜索是否覆盖每篇已发布笔记、链接是否有效。任何主题、插件加载或输出检查错误都会使构建失败。直接运行 `hexo g` 只会生成博客，也不会复制浏览器依赖，因此发布前使用统一命令。
 
 `node_modules/` 和 `db.json` 不再提交；`public/` 继续提交，兼容“本地编译后 push”的现有流程。不要手改 `public/`；修改文章、配置或 `themes/` 后重建。Windows 可以运行 `deployment.bat`；Linux/macOS 可以运行 `./deployment.sh`。两者都调用 `npm run build`。
 
@@ -80,7 +80,7 @@ gh auth status
 
 Cloudflare Pages 若构建源码，生产分支为 `master`，Node.js 版本设为 `22`（`.nvmrc` 已提供，也可在控制台设置 `NODE_VERSION=22`）。官方设置说明：[Cloudflare Pages 的 Hexo 部署指南](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/)。无需填写 Hexo `deploy`；当前 `deploy.type` 为空，原先的 `npm run deploy` 实际不会发布。
 
-GitHub Actions 只验证安装与构建；不调用部署 hook，也不改变线上托管配置。不要把 hook URL 或 Cloudflare token 写进仓库。
+GitHub Actions 验证安装、构建检查器的回归测试和完整构建；不调用部署 hook，也不改变线上托管配置。检查器的测试可在本地运行 `npm test`，已有生成结果可运行 `npm run check` 检查。不要把 hook URL 或 Cloudflare token 写进仓库。
 
 ## 资源与维护
 

@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '../public');
 
 function check() {
   const failures = [];
+  const wikiPages = [];
   let pages = 0;
   function visit(folder) {
     for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
@@ -16,6 +17,7 @@ function check() {
       const label = path.relative(root, file);
       if (file.endsWith('.html')) {
         pages++;
+        if (label.startsWith('wiki/')) wikiPages.push({ label, text });
         // Ordinary outbound article/friend links are intentionally allowed.
         for (const match of text.matchAll(/<(script|link)\b[^>]*>/gi)) {
           const tag = match[0];
@@ -55,8 +57,13 @@ function check() {
     if (!fs.existsSync(path.join(root, file))) failures.push(`Missing ${file}`);
   }
   visit(root);
+  failures.push(...require('./check-wiki.cjs')({
+    root,
+    pages: wikiPages,
+    themeSource: path.resolve(__dirname, '../themes/wiki/source')
+  }));
   if (failures.length) throw new Error(failures.join('\n'));
-  console.log(`Checked ${pages} HTML pages: local runtime resources exist; Blog and Wiki outputs are present.`);
+  console.log(`Checked ${pages} HTML pages: local resources exist; Blog and Wiki outputs, Wiki asset versions and search index are valid.`);
 }
 
 module.exports = check;
