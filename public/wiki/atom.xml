@@ -10,7 +10,37 @@
   <rights>All rights reserved 2026, PopHirasawa</rights>
   <subtitle>循此苦旅，直抵群星。</subtitle>
   <title>PopHirasawa's wiki</title>
-  <updated>2023-04-06T17:49:01.000Z</updated>
+  <updated>2026-10-09T11:23:03.000Z</updated>
+  <entry>
+    <author>
+      <name>PopHirasawa</name>
+    </author>
+    <category term="03音乐" scheme="https://pophirasawa.top/wiki/categories/03%E9%9F%B3%E4%B9%90/"/>
+    <category term="吉他" scheme="https://pophirasawa.top/wiki/categories/03%E9%9F%B3%E4%B9%90/%E5%90%89%E4%BB%96/"/>
+    <category term="吉他" scheme="https://pophirasawa.top/wiki/tags/%E5%90%89%E4%BB%96/"/>
+    <content>
+      <![CDATA[<p>吉他相关的技巧、乐理、曲目与练习记录，整理在这里。</p><h2 id="笔记分区">笔记分区</h2><table><thead><tr><th>分区</th><th>记录什么</th></tr></thead><tbody><tr><td>基础技巧</td><td>持琴、左右手配合、和弦转换、拨弦与扫弦等学习笔记</td></tr><tr><td>乐理与节奏</td><td>音名、音程、和弦、节拍，以及练习时遇到的问题</td></tr><tr><td>曲目练习</td><td>曲名、谱子来源、练习段落、难点和进度</td></tr><tr><td>练习记录</td><td>每次练了什么、练到什么程度、下次接着练什么</td></tr></tbody></table><p>新增笔记后，会出现在左侧 <strong>音乐 → 吉他</strong> 目录中，也可以通过搜索找到。</p><h2 id="每次练习记什么">每次练习记什么</h2><ul><li>日期和练习时长。</li><li>这次的目标，以及具体练习的内容或曲目段落。</li><li>用节拍器时，记录速度、节拍和能否稳定完成。</li><li>遇到的卡点，以及尝试了什么调整。</li><li>下次继续练的一个具体问题。</li></ul><p>练习记录按日期或主题单独成篇；同一技巧的补充可以接着更新原笔记。录音、视频和谱子链接放在对应记录里，方便回看。</p><h2 id="学习资料">学习资料</h2><p>教材章节、课程链接和谱子来源，随对应笔记一起记录；摘录时标明出处。</p><h2 id="阶段复盘">阶段复盘</h2><p>学完一个主题或练完一首曲目后，整理收获、还不稳的地方和下一阶段目标。较完整的学习心得可以另写一篇博客，再链接回相关 Wiki 笔记。</p>]]>
+    </content>
+    <id>https://pophirasawa.top/wiki/03%E9%9F%B3%E4%B9%90/%E5%90%89%E4%BB%96/%E5%AD%A6%E4%B9%A0%E7%B4%A2%E5%BC%95/</id>
+    <link href="https://pophirasawa.top/wiki/03%E9%9F%B3%E4%B9%90/%E5%90%89%E4%BB%96/%E5%AD%A6%E4%B9%A0%E7%B4%A2%E5%BC%95/"/>
+    <published>2026-10-09T11:23:03.000Z</published>
+    <summary>
+      <![CDATA[<p>吉他相关的技巧、乐理、曲目与练习记录，整理在这里。</p>
+<h2 id="笔记分区">笔记分区</h2>
+<table>
+<thead>
+<tr>
+<th>分区</th>
+<th>记录什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基础技巧]]>
+    </summary>
+    <title>吉他学习笔记</title>
+    <updated>2026-10-09T11:23:03.000Z</updated>
+  </entry>
   <entry>
     <author>
       <name>PopHirasawa</name>
