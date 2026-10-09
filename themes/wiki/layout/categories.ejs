@@ -1,0 +1,2 @@
+<header class="listing-header"><h1 id="article-title">分类索引</h1><p>按主题浏览笔记。</p></header>
+<div class="taxonomy-list"><% site.categories.sort('name', 1).each(function(category) { %><a href="<%= url_for(category.path) %>"><span><%= wiki_label(category.name) %></span><span><%= category.length %> 篇</span></a><% }); %></div>

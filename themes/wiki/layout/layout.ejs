@@ -1,0 +1,20 @@
+<% const hasOutline = Boolean(page.content && /<h[1-3]\b[^>]*id=/.test(page.content)); %>
+<!doctype html>
+<html lang="<%= Array.isArray(config.language) ? config.language[0] : config.language %>" data-theme="light">
+<%- partial('_partial/head') %>
+<body>
+  <a class="skip-link" href="#content">跳到正文</a>
+<%- partial('_partial/header') %>
+  <div class="wiki-shell <%= hasOutline ? 'has-outline' : 'wide-layout' %>">
+<%- partial('_partial/sidebar') %>
+    <main id="content" class="main-content" tabindex="-1">
+<%- body %>
+<%- partial('_partial/footer') %>
+    </main>
+<% if (hasOutline) { %><%- partial('_partial/outline') %><% } %>
+  </div>
+  <button id="sidebar-backdrop" class="sidebar-backdrop" type="button" aria-label="关闭知识目录" hidden></button>
+<%- partial('_partial/search') %>
+  <div id="wiki-announcement" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>

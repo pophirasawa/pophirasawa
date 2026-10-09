@@ -1,0 +1,17 @@
+<% const library = wiki_structure(); %>
+<% if (is_home() && (!page.current || page.current === 1)) { %>
+  <header class="home-intro"><h1 id="article-title">知识库</h1><p class="home-description">算法、数学、学习笔记与随手记录。</p><p class="home-quote"><%= config.subtitle %></p></header>
+  <section class="browse-section" aria-labelledby="browse-heading">
+    <div class="section-heading"><h2 id="browse-heading">按主题浏览</h2><span><%= library.posts.length %> 篇笔记</span></div>
+    <div class="topic-groups">
+<% library.groups.forEach(function(group) { %>
+        <section class="topic-group"><h3><%- wiki_icon('folder') %><%= group.label %><span><%= group.posts.length %></span></h3>
+          <ul><% group.posts.forEach(function(post) { %><li><a href="<%= url_for(post.path) %>"><%= wiki_title(post) %></a><span><%= wiki_label(post.slug.split('/').slice(-2, -1)[0] || '') %></span></li><% }); %></ul>
+        </section>
+<% }); %>
+    </div>
+  </section>
+  <section class="recent-section" aria-labelledby="recent-heading"><div class="section-heading"><h2 id="recent-heading">最近的笔记</h2><a href="<%= url_for('archives/') %>">查看全部</a></div>
+    <div class="note-list"><% library.recent.forEach(function(post) { %><article class="note-list-item"><div><a class="note-title" href="<%= url_for(post.path) %>"><%= wiki_title(post) %></a><p><%= wiki_plain(post.more || post.content).slice(0, 92) %></p></div><time datetime="<%= date(post.updated, 'YYYY-MM-DD') %>"><%= date(post.updated, 'YYYY-MM-DD') %></time></article><% }); %></div>
+  </section>
+<% } else { %><%- partial('_partial/listing') %><% } %>

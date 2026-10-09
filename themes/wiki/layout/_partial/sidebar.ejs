@@ -1,0 +1,10 @@
+<aside id="sidebar" class="sidebar" aria-label="知识目录">
+  <div class="sidebar-mobile-header"><span>知识目录</span><button id="sidebar-close" class="icon-button" type="button" aria-label="关闭知识目录"><%- wiki_icon('close') %></button></div>
+  <nav class="sidebar-navigation" aria-label="笔记目录">
+    <a class="overview-link <%= is_home() ? 'is-current' : '' %>" href="<%= url_for('') %>" <%- is_home() ? 'aria-current="page"' : '' %>><%- wiki_icon('home') %><span>知识库首页</span></a>
+    <div class="sidebar-section-label">知识目录</div>
+    <div id="tree"><%- wiki_tree(page.slug) %></div>
+  </nav>
+  <nav class="sidebar-secondary" aria-label="其他索引"><a href="<%= url_for('categories/') %>">分类索引</a><a href="<%= url_for('tags/') %>">标签索引</a><a href="<%= url_for('archives/') %>">全部笔记</a></nav>
+  <p class="sidebar-caption"><%= config.subtitle %></p>
+</aside>

@@ -1,0 +1,15 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<% const pageTitle = page.title || (page.category ? wiki_label(page.category) : page.tag || (is_archive() ? '全部笔记' : '知识库')); %>
+  <title><%= pageTitle %> | <%= config.title %></title>
+  <meta name="description" content="<%= page.description || 'PopHirasawa 的算法、数学、学习笔记与随手记录。' %>">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="<%= url_for(theme.favicon) %>">
+  <link rel="canonical" href="<%= full_url_for((page.path || '').replace(/(^|\/)index\.html$/, '$1')) %>">
+  <script src="<%= wiki_asset('js/theme-init.js') %>"></script>
+  <link rel="stylesheet" href="<%= wiki_asset('css/main.css') %>">
+  <link rel="stylesheet" href="/vendor/katex/katex.min.css">
+  <script src="/vendor/katex/copy-tex.min.js" defer></script>
+  <script src="<%= wiki_asset('js/main.js') %>" defer></script>
+</head>

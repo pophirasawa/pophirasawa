@@ -1,0 +1,9 @@
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-title" data-index="<%= url_for('search.json') %>">
+  <div class="search-panel">
+    <div class="search-field"><%- wiki_icon('search') %><label id="search-title" class="sr-only" for="search-input">搜索知识库</label><input id="search-input" type="search" role="combobox" aria-autocomplete="list" aria-controls="search-results" aria-expanded="true" placeholder="搜索笔记、关键词…" autocomplete="off" spellcheck="false"><button id="search-close" class="icon-button" type="button" aria-label="关闭搜索"><%- wiki_icon('close') %></button></div>
+    <div id="search-status" class="search-status" role="status" aria-live="polite">输入标题或正文关键词。</div>
+    <ol id="search-results" class="search-results" role="listbox" aria-label="搜索结果"></ol>
+    <button id="search-retry" class="search-retry" type="button" hidden>重新加载搜索</button>
+    <div class="search-help"><span><kbd>↑</kbd><kbd>↓</kbd> 选择</span><span><kbd>Enter</kbd> 打开</span><span><kbd>Esc</kbd> 关闭</span></div>
+  </div>
+</dialog>

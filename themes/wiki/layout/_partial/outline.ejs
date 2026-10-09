@@ -1,0 +1,5 @@
+<aside class="page-outline" aria-label="文章大纲">
+  <div class="outline-heading"><%- wiki_icon('list') %><span>本页内容</span></div>
+  <nav id="article-toc" class="article-toc" aria-label="本页内容"><%- toc(page.content, { list_number: false, max_depth: 3 }) %></nav>
+  <a class="back-to-top" href="#content"><%- wiki_icon('top') %><span>回到顶部</span></a>
+</aside>

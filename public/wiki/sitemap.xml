@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://pophirasawa.top/wiki/about/index.html</loc>
+    <loc>https://pophirasawa.top/wiki/categories/index.html</loc>
     
     <lastmod>2026-10-08</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://pophirasawa.top/wiki/categories/index.html</loc>
+    <loc>https://pophirasawa.top/wiki/about/index.html</loc>
     
     <lastmod>2026-10-08</lastmod>
     
@@ -135,13 +135,6 @@
   </url>
   
   <url>
-    <loc>https://pophirasawa.top/wiki/tags/SAM/</loc>
-    <lastmod>2026-10-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://pophirasawa.top/wiki/tags/%E6%95%B0%E8%AE%BA/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -157,6 +150,13 @@
   
   <url>
     <loc>https://pophirasawa.top/wiki/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pophirasawa.top/wiki/tags/SAM/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -186,13 +186,6 @@
   </url>
   
   <url>
-    <loc>https://pophirasawa.top/wiki/categories/00%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
-    <lastmod>2026-10-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://pophirasawa.top/wiki/categories/00%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -215,6 +208,13 @@
   
   <url>
     <loc>https://pophirasawa.top/wiki/categories/01%E5%AD%A6%E4%B9%A0/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pophirasawa.top/wiki/categories/00%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

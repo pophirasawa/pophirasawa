@@ -1,0 +1,2 @@
+<header class="listing-header"><h1 id="article-title">标签索引</h1><p>按关键词查找笔记。</p></header>
+<div class="taxonomy-list"><% site.tags.sort('name', 1).each(function(tag) { %><a href="<%= url_for(tag.path) %>"><span><%= tag.name %></span><span><%= tag.length %> 篇</span></a><% }); %></div>

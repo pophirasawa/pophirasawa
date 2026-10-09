@@ -100,7 +100,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: tree
+theme: wiki
 
 markdown:
   render:
@@ -135,7 +135,6 @@ nofollow:
 auto_dir_categorize:
   enable: true  # options:true, false; default is true
   force: false # options:true, false; default is false
-
 
 
 

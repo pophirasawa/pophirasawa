@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="header-inner">
+    <button id="sidebar-toggle" class="icon-button mobile-directory-toggle" type="button" aria-label="打开知识目录" aria-controls="sidebar" aria-expanded="false"><%- wiki_icon('menu') %></button>
+    <a class="brand" href="<%= url_for('') %>" aria-label="PopHirasawa Wiki 首页">
+      <svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><path d="m8 22 5-13 11 5-5 10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="22" r="2" fill="currentColor"/><circle cx="13" cy="9" r="2.5" fill="currentColor"/><circle cx="24" cy="14" r="2" fill="currentColor"/><circle cx="19" cy="24" r="1.5" fill="currentColor"/></svg>
+      <span>PopHirasawa<span class="brand-section">Wiki</span></span>
+    </a>
+    <button id="search-toggle" class="search-trigger" type="button" aria-haspopup="dialog"><%- wiki_icon('search') %><span>搜索笔记</span><kbd>Ctrl K</kbd></button>
+    <nav class="header-links" aria-label="网站导航"><a href="/">博客</a><a href="<%= url_for('about/') %>">关于</a></nav>
+    <button id="theme-toggle" class="icon-button theme-toggle" type="button" aria-label="切换到夜间主题" aria-pressed="false"><span class="theme-sun"><%- wiki_icon('sun') %></span><span class="theme-moon"><%- wiki_icon('moon') %></span></button>
+  </div>
+</header>

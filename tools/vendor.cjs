@@ -8,6 +8,10 @@ function vendor() {
   const destination = path.join(root, 'public/vendor');
   fs.mkdirSync(destination, { recursive: true });
   const assets = [
+    ['@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2', 'fonts/ibm-plex-sans-400.woff2'],
+    ['@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-500-normal.woff2', 'fonts/ibm-plex-sans-500.woff2'],
+    ['@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2', 'fonts/ibm-plex-sans-600.woff2'],
+    ['@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2', 'fonts/ibm-plex-mono-400.woff2'],
     ['jquery/dist/jquery.min.js', 'jquery/jquery.min.js'],
     ['animejs/lib/anime.min.js', 'anime/anime.min.js'],
     ['@fancyapps/fancybox/dist/jquery.fancybox.min.js', 'fancybox/jquery.fancybox.min.js'],

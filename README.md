@@ -1,6 +1,6 @@
 # PopHirasawa 的博客与 Wiki
 
-Hexo 8 + Melody 2.9（本地主题）+ Tree。使用 Node.js 22；博客与 Wiki 必须一起构建。
+Hexo 8 + Melody 2.9（博客本地主题）+ Wiki（现代文档主题）。使用 Node.js 22；博客与 Wiki 必须一起构建。
 
 ## 安装和预览
 
@@ -85,8 +85,9 @@ GitHub Actions 只验证安装与构建；不调用部署 hook，也不改变线
 ## 资源与维护
 
 - Melody 主题来自仓库原先实际使用的 2.9.0，保存在 `themes/melody/` 并保留原许可；重新安装依赖不会覆盖本地修复。
+- Wiki 使用 `themes/wiki/`：中性底色与 `#3935bb` 点缀的日夜主题、可折叠知识目录、文章大纲、全文搜索和代码复制。日夜主题默认跟随系统，手动选择后记住；Ctrl/⌘ K 打开本地搜索，支持标题、文件名和正文。手机使用目录抽屉。IBM Plex 字体由本站提供，未选择主题时会在 CSS 加载前读取系统偏好，避免页面闪烁。旧 Tree 源码保留作历史参考。
 - 核心浏览器依赖位于生成的 `/vendor/`，由 `tools/vendor.cjs` 从 lockfile 锁定的 npm 包复制并附带许可。无需访问 jsDelivr、cdnjs、BootCDN 或 staticfile 来显示页面、公式和图表。
-- Mermaid 仅在包含图表的页面加载。Wiki 搜索在本地目录中查找，回车打开第一条匹配结果；引号等字符不会再破坏 jQuery 选择器。
+- Mermaid 仅在包含图表的页面加载；Wiki 图表随日夜主题重新渲染。Wiki 搜索不依赖 jQuery 或外部搜索服务，输入引号等字符不会破坏界面。
 - Wiki 的规范地址是 `/wiki/条目/`，旧 `/wiki/wiki/条目/` 保留静态跳转页；分类和标签链接也指向 Wiki 自己。
 - 不蒜子统计默认关闭，避免每页都请求第三方服务。Valine 和 LeanCloud SDK 已随站点提供；评论 API 和头像仍是第三方服务。原先 `severURLs` 拼错且填写了博客网址，现使用正确的 `serverURLs`，指向 LeanCloud 应用路由返回的 `https://shared.lc-cn-n1-shared.com`。2026-10-08 只读计数请求返回 HTTP 200，未读取评论正文或测试发表新评论。后续迁移 LeanCloud 时，从新应用凭证中核对 REST API 地址，不要填写博客网址。
 - 把 JS/CSS 本地化只解决外部依赖访问问题，不能保证博客托管节点本身在中国大陆的速度。没有大陆网络实测数据时，不应把此修复描述成测速结论。

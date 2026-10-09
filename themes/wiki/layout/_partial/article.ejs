@@ -1,0 +1,10 @@
+<article class="wiki-article">
+  <header class="article-header">
+    <nav class="breadcrumbs" aria-label="当前位置"><a href="<%= url_for('') %>">知识库</a><% wiki_breadcrumbs(page).forEach(function(crumb) { %><%- wiki_icon('chevron') %><% if (crumb.href) { %><a href="<%= url_for(crumb.href) %>"><%= crumb.label %></a><% } else { %><span><%= crumb.label %></span><% } %><% }); %></nav>
+    <h1 id="article-title"><%= page.title || wiki_title(page) %></h1>
+    <div class="article-meta"><span><%= config.author %></span><% if (page.date) { %><time datetime="<%= date(page.date, 'YYYY-MM-DD') %>"><%= date(page.date, 'YYYY-MM-DD') %></time><% } %><% if (page.slug) { %><span>约 <%= Math.max(1, Math.ceil(wiki_plain(page.content).length / 450)) %> 分钟阅读</span><% } %><button id="copy-page-link" class="text-button" type="button"><%- wiki_icon('link') %><span>复制链接</span></button></div>
+<% if (page.tags && page.tags.length) { %><div class="article-tags"><% page.tags.each(function(tag) { %><a href="<%= url_for(tag.path) %>"><%= tag.name %></a><% }); %></div><% } %>
+  </header>
+  <div id="article-content" class="prose"><%- page.content %></div>
+<% if (page.prev || page.next) { %><nav class="article-neighbors" aria-label="相邻笔记"><% if (page.prev) { %><a href="<%= url_for(page.prev.path) %>"><span>上一篇</span><strong><%= wiki_title(page.prev) %></strong></a><% } %><% if (page.next) { %><a href="<%= url_for(page.next.path) %>"><span>下一篇</span><strong><%= wiki_title(page.next) %></strong></a><% } %></nav><% } %>
+</article>
