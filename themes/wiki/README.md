@@ -1,6 +1,6 @@
 # Wiki theme
 
-为 PopHirasawa 的 Hexo Wiki 编写的本地主题。使用中性配色与 `#3935bb` 点缀、知识目录、文章大纲和响应式阅读布局，不加载在线字体或外部运行时资源。
+为 PopHirasawa 的 Hexo Wiki 编写的本地主题。使用中性配色与 `#39c5bb` 点缀、知识目录、文章大纲和响应式阅读布局，不加载在线字体或外部运行时资源。
 
 - `layout/`：首页、笔记、分类、标签和搜索弹窗。
 - `scripts/helpers.js`：目录、摘要、资源版本和本地 `search.json` 索引。
