@@ -14,7 +14,7 @@ function check() {
       if (entry.isDirectory()) { visit(file); continue; }
       if (!file.endsWith('.html') && !file.endsWith('.css')) continue;
       const text = fs.readFileSync(file, 'utf8');
-      const label = path.relative(root, file);
+      const label = path.relative(root, file).replaceAll(path.sep, '/');
       if (file.endsWith('.html')) {
         pages++;
         if (label.startsWith('wiki/')) wikiPages.push({ label, text });
