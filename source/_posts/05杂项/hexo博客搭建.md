@@ -185,7 +185,9 @@ hexo d	// 部署
 
 构建选项这样写就完事儿了
 
-![ee](c)
+![Cloudflare Pages 构建设置（旧版）](/imgs/hexo.jpg)
+
+> 当前博客同时包含 Wiki，构建命令请使用 `npm run build`，输出目录仍为 `public`。
 
 **以后你每次就把整个文件夹push到你的Github上，他会自动构建，一个月有500次，完全够用了捏**
 
@@ -233,4 +235,3 @@ category:
 换主题啊，自定义域名啊啥的，我懒得写了，自己上网查得了
 
 找主题上https://hexo.io/themes/就行
-

@@ -1,3 +1,4 @@
 @echo off
-set /p name=
-hexo --config _config_wiki.yml new %name%
+cd /d "%~dp0"
+set /p "postTitle=Wiki title: "
+call npm run new:wiki -- "%postTitle%"

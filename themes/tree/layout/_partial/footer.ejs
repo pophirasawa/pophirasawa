@@ -35,11 +35,3 @@
 <script type="text/javascript">
 	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
 </script>
-<% if (config.mermaid && config.mermaid.enable) { %>
-    <script src='https://unpkg.com/mermaid@<%= config.mermaid.version %>/dist/mermaid.min.js'></script>
-    <script>
-      if (window.mermaid) {
-        mermaid.initialize({theme: 'forest'});
-      }
-    </script>
-<% } %>

@@ -20,7 +20,7 @@
           <% if (page.categories.data[j] && page.categories.data[j].name) { %>
               <span>
                   <i class="fa fa-folder" aria-hidden="true">
-                  <a href="/<%- page.categories.data[j].path %>"><%- page.categories.data[j].name %></a>
+                  <a href="<%- url_for(page.categories.data[j].path) %>"><%- page.categories.data[j].name %></a>
                   </i>
                 <% if (j < page.categories.data.length - 1) { %>
                   >
@@ -36,7 +36,7 @@
             <% if (page.tags.data[j] && page.tags.data[j].name) { %>
                 <span>
                     <i class="fa fa-tag" aria-hidden="true">
-                    <a href="/<%- page.tags.data[j].path %>"><%- page.tags.data[j].name %></a>
+                    <a href="<%- url_for(page.tags.data[j].path) %>"><%- page.tags.data[j].name %></a>
                     </i>
                 </span>
             <% } %>

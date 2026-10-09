@@ -1,2 +1,5 @@
-hexo clean&&hexo g&&hexo --config _config_wiki.yml clean&&hexo --config _config_wiki.yml g&&DEL db.json
+@echo off
+cd /d "%~dp0"
+call npm run build
+if errorlevel 1 exit /b 1
 pause

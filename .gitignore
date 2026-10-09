@@ -1,0 +1,11 @@
+node_modules/
+db.json
+.deploy*/
+_multiconfig.yml
+*.log
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+# public/ stays versioned: this site supports build locally, then git push.

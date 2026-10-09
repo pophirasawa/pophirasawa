@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  hljs.initHighlightingOnLoad();
   clickTreeDirectory();
   serachTree();
   // pjaxLoad();
@@ -158,8 +157,7 @@ function pjaxLoad() {
       $("#tree .active").removeClass("active");
       var title = $("#article-title").text().trim();
       if (title.length) {
-        var searchResult = $("#tree li.file").find(
-            "a:contains('" + title + "')");
+        var searchResult = $("#tree li.file a").filter(function () { return $(this).text().indexOf(title) !== -1; });
         if (searchResult.length) {
           $(".fa-minus-square-o").removeClass("fa-minus-square-o").addClass(
               "fa-plus-square-o");
@@ -211,8 +209,10 @@ function serachTree() {
       $(".fa-plus-square-o").removeClass("fa-plus-square-o").addClass(
           "fa-minus-square-o");
       $("#tree ul").css("display", "none");
-      var searchResult = $("#tree li").find(
-          "a:contains('" + inputContent + "')");
+      var query = inputContent.toUpperCase();
+      var searchResult = $("#tree li a").filter(function () {
+        return $(this).text().toUpperCase().indexOf(query) !== -1;
+      });
       if (searchResult.length) {
         showActiveTree(searchResult.parent(), false)
       }
@@ -221,14 +221,13 @@ function serachTree() {
 
   $("#search-input").on("keyup", function (e) {
     e.preventDefault();
-    if (event.keyCode == 13) {
-      var inputContent = e.currentTarget.value;
-
-      if (inputContent.length === 0) {
-      } else {
-        window.open(searchEngine + inputContent + "%20site:" + homeHost,
-            "_blank");
-      }
+    if (e.key === 'Enter') {
+      var query = e.currentTarget.value.trim().toUpperCase();
+      if (!query) return;
+      var first = $('#tree li.file a').filter(function () {
+        return $(this).text().toUpperCase().indexOf(query) !== -1;
+      }).first();
+      if (first.length) window.location.assign(first.attr('href'));
     }
   });
 }

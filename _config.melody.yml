@@ -78,7 +78,7 @@ local_search:
 # ---------------
 mathjax:
   enable: false
-  cdn: https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  cdn: ''
 
 # KaTeX
 # Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/third-party-support.html#katex
@@ -86,7 +86,7 @@ mathjax:
 katex:
   enable: true
   cdn:
-    css: https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.4/katex.min.css
+    css: /vendor/katex/katex.min.css
   hide_scrollbar: true
 
 # Toggle fireworks (IE >= 10)
@@ -106,6 +106,7 @@ tencent_analytics:
 # ---------------
 stylesheets:
   - /css/index.css
+  - /vendor/fontawesome/css/v4-shims.min.css
 # scripts loaded in the end of the body
 # ---------------
 scripts:
@@ -122,14 +123,14 @@ scripts:
 # ---------------
 cdn:
   css:
-    fontawesome: https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css
+    fontawesome: /vendor/fontawesome/css/all.min.css
     # fontawesomeV5: https://use.fontawesome.com/releases/v5.3.1/css/all.css
   js:
-    anime: https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js
-    jquery: https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js
-    fancybox: https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js
-    velocity: https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js
-    velocity-ui: https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.ui.min.js
+    anime: /vendor/anime/anime.min.js
+    jquery: /vendor/jquery/jquery.min.js
+    fancybox: /vendor/fancybox/jquery.fancybox.min.js
+    velocity: /vendor/velocity/velocity.min.js
+    velocity-ui: /vendor/velocity/velocity.ui.min.js
 
 # Post info settings
 # ---------------
@@ -245,7 +246,8 @@ valine:
    lang: zh-cn # i18n: zh-cn/en
    placeholder: 细说 # valine comment input placeholder(like: Please leave your footprints )
    guest_info: nick,mail,link 
-   severURLs: https://pophirasawa.pages.dev/
+   # Verified using LeanCloud's application router; not the blog's hosting URL.
+   serverURLs: https://shared.lc-cn-n1-shared.com
 
 # vssue:
   # enable: false # Set to true to enable
@@ -272,7 +274,7 @@ ICP:
 # busuanzi count for PV / UV in site
 busuanzi:
   # count values only if the other configs are false
-  enable: true
+  enable: false
   # custom uv span for the whole site
   site_uv: true
   site_uv_header: F<i class="fa fa-user"></i>
@@ -368,6 +370,7 @@ disable_baidu_transformation: true
 404Text: “寄了”
 
 # mermaid chart
-mermaid: ## mermaid url https://github.com/knsv/mermaid
+mermaid:
   enable: true  # default true
   theme: forest
+  src: /vendor/mermaid/mermaid.min.js

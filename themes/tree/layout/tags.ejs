@@ -24,7 +24,7 @@
                 <% site.tags.forEach(function(tag){ %>
                     <li class="menu-item">
                         <span>
-                              <a href="/<%- tag.path %>"><%- tag.name %>(<%- tag.length %>)</a>
+                              <a href="<%- url_for(tag.path) %>"><%- tag.name %>(<%- tag.length %>)</a>
                         </span>
                     </li>
                 <% }); %>

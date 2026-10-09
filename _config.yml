@@ -10,7 +10,7 @@ keywords:
 author: PopHirasawa
 language:
   - zh-CN
-timezone: ''
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -82,7 +82,7 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+updated_option: 'date'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -106,6 +106,19 @@ theme: melody
 deploy: 
   type: 
 
+# Retain the former Markdown renderer's line breaks and extensions.
+markdown:
+  render:
+    html: true
+    xhtmlOut: true
+    breaks: true
+    linkify: true
+    typographer: true
+    langPrefix: ''
+
+mermaid:
+  enable: true
+  version: '12.1.0'
 
 
 
