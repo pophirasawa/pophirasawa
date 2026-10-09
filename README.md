@@ -32,6 +32,7 @@ npm run publish -- "未完成的文章"
 ## 本地构建后提交
 
 ```sh
+git switch master
 git pull --ff-only
 npm ci --ignore-scripts
 npm run build
@@ -41,7 +42,9 @@ git commit -m "发布：文章标题"
 git push origin master
 ```
 
-如果同时修改了配置、主题或工具，把对应文件也加入本次提交。修复版本目前在 `fix/blog-maintenance` 分支，应先审阅并合并到 `master`，再从 `master` 继续写文章。
+如果同时修改了配置、主题或工具，把对应文件也加入本次提交。主题、依赖等维护改动先在工作分支完成构建和验证，再合并到 `master`。CF Pages 从 `master` 自动部署，部署后到 `https://pophirasawa.top` 检查结果。
+
+Windows 下继续使用原来的 `deployment.bat`：先安装 Node.js 22 并运行 `npm ci --ignore-scripts`，然后运行这个批处理。它现在调用 `npm run build`，会一起生成博客、Wiki 和本地浏览器资源，并检查输出；构建失败会返回失败状态。它只负责编译，编译成功后仍需要提交并推送 `public/` 和文章源码。
 
 ## GitHub 写入认证
 
@@ -66,7 +69,7 @@ gh auth status
 
 ## 托管设置
 
-当前使用你已有的 CF Pages 自动部署 hook；继续使用“本地构建 → push → hook 部署”，无需创建新的部署项目或更换 hook。当前环境无法读取 Pages 控制台，所以平台的构建设置仍需与你已有的方式一致：
+当前使用你已有的 CF Pages 自动部署 hook；继续使用“本地运行 `deployment.bat` → 提交源码和 `public/` → push 到 `master` → hook 部署”。保留已有的静态发布设置，发布目录为 `public`，不需要改成在 Cloudflare 上编译。以下第二种方式仅用于将来主动迁移到云端构建：
 
 | 发布方式 | 平台构建命令 | 输出目录 |
 | --- | --- | --- |
