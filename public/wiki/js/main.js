@@ -6,11 +6,24 @@
   const themeButton = document.getElementById('theme-toggle');
   const announcement = document.getElementById('wiki-announcement');
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let themeTransitionTimer;
   let preference;
   try { preference = localStorage.getItem(themeKey); } catch (_) {}
   const say = text => { announcement.textContent = text; };
+  reducedMotion.addEventListener('change', () => {
+    if (!reducedMotion.matches) return;
+    clearTimeout(themeTransitionTimer);
+    root.classList.remove('theme-transition');
+    themeButton.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
+  });
 
   function applyTheme(theme, remember = false) {
+    if (remember && !reducedMotion.matches) {
+      clearTimeout(themeTransitionTimer);
+      root.classList.add('theme-transition');
+      themeTransitionTimer = setTimeout(() => root.classList.remove('theme-transition'), 260);
+    }
     root.dataset.theme = theme;
     themeButton.setAttribute('aria-label', theme === 'dark' ? '切换到日间主题' : '切换到夜间主题');
     themeButton.setAttribute('aria-pressed', String(theme === 'dark'));
@@ -19,6 +32,12 @@
       preference = theme;
       try { localStorage.setItem(themeKey, theme); } catch (_) {}
       say(theme === 'dark' ? '已切换到夜间主题' : '已切换到日间主题');
+      if (!reducedMotion.matches) {
+        themeButton.querySelector(theme === 'dark' ? '.theme-sun' : '.theme-moon').animate(
+          [{ transform: 'rotate(-30deg)', opacity: .5 }, { transform: 'rotate(0)', opacity: 1 }],
+          { duration: 240, easing: 'cubic-bezier(.2,.7,.2,1)' }
+        );
+      }
     }
     renderDiagrams();
   }
@@ -30,6 +49,38 @@
     if (event.key !== themeKey) return;
     preference = event.newValue;
     applyTheme(preference === 'dark' || preference === 'light' ? preference : systemTheme.matches ? 'dark' : 'light');
+  });
+
+  // Keep native details semantics; reverse interrupted folds from their current height.
+  document.querySelectorAll('.directory-folder details').forEach(details => {
+    const summary = details.querySelector(':scope > summary');
+    const panel = details.querySelector(':scope > .directory-list');
+    let expanded = details.open;
+    let animation;
+    function settle() {
+      animation?.cancel();
+      animation = undefined;
+      details.open = expanded;
+      panel.style.removeProperty('overflow');
+    }
+    summary.addEventListener('click', event => {
+      if (reducedMotion.matches) return;
+      event.preventDefault();
+      const height = details.open ? panel.getBoundingClientRect().height : 0;
+      expanded = animation ? !expanded : !details.open;
+      animation?.cancel();
+      details.open = true;
+      panel.style.overflow = 'hidden';
+      animation = panel.animate(
+        [{ height: height + 'px' }, { height: (expanded ? panel.scrollHeight : 0) + 'px' }],
+        { duration: 200, easing: 'cubic-bezier(.2,.7,.2,1)' }
+      );
+      const current = animation;
+      current.finished.then(() => { if (animation === current) settle(); }).catch(() => {});
+    });
+    reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches && animation) settle();
+    });
   });
 
   // Mobile directory: focus remains in the drawer until it is dismissed.

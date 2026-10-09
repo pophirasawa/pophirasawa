@@ -10,6 +10,8 @@
 
 日夜选择保存在 `pophirasawa.wiki.theme`，首次访问跟随系统；无法使用 localStorage 时仍可以切换。搜索支持标题、文件路径和正文，快捷键为 Ctrl/⌘ K，方向键选择，Enter 打开，Esc 关闭。
 
+正文使用一次短渐入，搜索弹窗、目录展开和手动日夜切换有轻量动效；系统启用“减少动态效果”时关闭动画。目录动画支持快速连点反向，内容仍由原生 `details` 控制。
+
 保留现有文章地址、Markdown 标题 ID 和旧 Tree 主题的 `_labelN` 书签。Tree 源码仍留在 `themes/tree/` 供历史参考，当前 Wiki 使用 `_config_wiki.yml` 中的 `theme: wiki`。
 
 IBM Plex Sans 和 Mono 由锁定版本的 npm 包复制到 `/vendor/fonts/`，许可位于 `/vendor/licenses/@fontsource/`。修改主题后，从仓库根目录运行 `./deployment.sh` / `deployment.bat`，同时生成博客、Wiki 和本地资源。
