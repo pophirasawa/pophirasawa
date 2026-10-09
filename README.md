@@ -14,7 +14,7 @@ npm run server
 
 `npm run build` 会依次清理并生成博客、清理并生成 Wiki、复制固定版本的 JS/CSS/字体、检查生成结果。任何主题或插件加载错误都会使构建失败。直接运行 `hexo g` 只会生成博客，也不会复制浏览器依赖，因此发布前使用统一命令。
 
-`node_modules/` 和 `db.json` 不再提交；`public/` 继续提交，兼容“本地编译后 push”的现有流程。不要手改 `public/`；修改文章、配置或 `themes/` 后重建。Windows 可以运行 `deployment.bat`。
+`node_modules/` 和 `db.json` 不再提交；`public/` 继续提交，兼容“本地编译后 push”的现有流程。不要手改 `public/`；修改文章、配置或 `themes/` 后重建。Windows 可以运行 `deployment.bat`；Linux/macOS 可以运行 `./deployment.sh`。两者都调用 `npm run build`。
 
 ## 写文章
 
@@ -46,6 +46,8 @@ git push origin master
 
 Windows 下继续使用原来的 `deployment.bat`：先安装 Node.js 22 并运行 `npm ci --ignore-scripts`，然后运行这个批处理。它现在调用 `npm run build`，会一起生成博客、Wiki 和本地浏览器资源，并检查输出；构建失败会返回失败状态。它只负责编译，编译成功后仍需要提交并推送 `public/` 和文章源码。
 
+Linux/macOS 下安装依赖后运行 `./deployment.sh`，也可以直接运行 `npm run build`。脚本会切换到仓库目录再构建，任何步骤失败都会停止；不会自动提交或推送。新增博客文章、Wiki、清理和预览分别用上面的 `npm run new`、`npm run new:wiki`、`npm run clean` 和 `npm run server`，这些命令在两种系统上通用。
+
 ## GitHub 写入认证
 
 公开仓库的 clone 不需要登录；push 需要认证。Git 的提交身份和 GitHub 登录是两件事。首次使用时，在本仓库设置你的提交姓名和邮箱：
@@ -69,7 +71,7 @@ gh auth status
 
 ## 托管设置
 
-当前使用你已有的 CF Pages 自动部署 hook；继续使用“本地运行 `deployment.bat` → 提交源码和 `public/` → push 到 `master` → hook 部署”。保留已有的静态发布设置，发布目录为 `public`，不需要改成在 Cloudflare 上编译。以下第二种方式仅用于将来主动迁移到云端构建：
+当前使用你已有的 CF Pages 自动部署 hook；继续使用“本地运行 `deployment.bat` / `./deployment.sh` → 提交源码和 `public/` → push 到 `master` → hook 部署”。保留已有的静态发布设置，发布目录为 `public`，不需要改成在 Cloudflare 上编译。以下第二种方式仅用于将来主动迁移到云端构建：
 
 | 发布方式 | 平台构建命令 | 输出目录 |
 | --- | --- | --- |
