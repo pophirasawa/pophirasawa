@@ -31,15 +31,15 @@ npm run publish -- "未完成的文章"
 
 ### 吉他学习笔记
 
-放在 Wiki 的 **音乐 → 吉他**，源码目录为 `source_wiki/_posts/03音乐/吉他/`；`学习索引.md` 是入口。技巧、乐理、曲目和练习记录放在这里，阶段性的学习心得可以单独写博客并链接回笔记。
+放在 Wiki 的 **音乐 → 吉他**，源码目录为 `source_wiki/_posts/03音乐/吉他/`。按标题随手记即可。
 
-用专用模板新建练习记录，标题和路径改为本次笔记的名字：
+新建一篇普通笔记：
 
 ```sh
-npm run new:wiki -- guitar "和弦转换练习" --path "03音乐/吉他/和弦转换练习"
+npm run new:wiki -- "吉他随记" --path "03音乐/吉他/吉他随记"
 ```
 
-模板在 `scaffolds/guitar.md`，包含练习目标、过程、问题、下一步和资料/录音。它使用现有 Wiki 主题，不会新增未填写的练习记录到线上。写完后运行 `./deployment.sh` / `deployment.bat`，提交源码和 `public/`，再推送。
+写完后运行 `./deployment.sh` / `deployment.bat`，提交源码和 `public/`，再推送。
 
 ## 本地构建后提交
 
