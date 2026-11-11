@@ -1,6 +1,6 @@
 # PopHirasawa
 
-*循此苦旅，直抵群星。*  
+循此苦旅，直抵群星  
 *Ad astra per aspera.*
 
 Interested in Guitar, LLMs, and Anime.
