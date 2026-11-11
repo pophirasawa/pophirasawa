@@ -3,12 +3,11 @@
   'use strict';
   var saved;
   try { saved = localStorage.getItem('pophirasawa.blog.theme'); } catch (_) {}
-  var theme = saved === 'light' || saved === 'dark' ? saved
-    : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  var theme = saved === 'dark' ? 'dark' : 'light';
   document.documentElement.dataset.theme = theme;
   document.getElementById('blog-theme-color').content = theme === 'dark' ? '#202124' : '#ffffff';
 })();
-</script><link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.min.css"><link rel="stylesheet" href="/css/index.css?v=4736180023"><link rel="stylesheet" href="/vendor/fontawesome/css/v4-shims.min.css?version=2.9.0"><link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css?version=2.9.0"><link rel="stylesheet" href="/css/theme.css?v=caa7e0f377"><script src="/js/theme.js?v=e26e5a9723" defer></script><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = {
+</script><link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.min.css"><link rel="stylesheet" href="/css/index.css?v=4736180023"><link rel="stylesheet" href="/vendor/fontawesome/css/v4-shims.min.css?version=2.9.0"><link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css?version=2.9.0"><link rel="stylesheet" href="/css/theme.css?v=caa7e0f377"><script src="/js/theme.js?v=15433bd03b" defer></script><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,

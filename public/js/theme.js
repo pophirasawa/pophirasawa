@@ -3,11 +3,8 @@
   var root = document.documentElement;
   var key = 'pophirasawa.blog.theme';
   var button = document.querySelector('.blog-theme-toggle');
-  var system = window.matchMedia('(prefers-color-scheme: dark)');
   var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var preference;
   var timer;
-  try { preference = localStorage.getItem(key); } catch (_) {}
 
   function apply(theme, remember) {
     if (remember && !motion.matches) {
@@ -22,19 +19,14 @@
     button.setAttribute('aria-pressed', String(theme === 'dark'));
     button.title = label;
     if (remember) {
-      preference = theme;
       try { localStorage.setItem(key, theme); } catch (_) {}
     }
   }
 
   button.addEventListener('click', function () { apply(root.dataset.theme === 'dark' ? 'light' : 'dark', true); });
-  system.addEventListener('change', function (event) {
-    if (preference !== 'light' && preference !== 'dark') apply(event.matches ? 'dark' : 'light');
-  });
   window.addEventListener('storage', function (event) {
     if (event.key !== key && event.key !== null) return;
-    preference = event.newValue;
-    apply(preference === 'light' || preference === 'dark' ? preference : system.matches ? 'dark' : 'light');
+    apply(event.newValue === 'dark' ? 'dark' : 'light');
   });
   motion.addEventListener('change', function () {
     if (motion.matches) {
@@ -42,6 +34,6 @@
       root.classList.remove('blog-theme-transition');
     }
   });
-  apply(root.dataset.theme);
+  apply(root.dataset.theme === 'dark' ? 'dark' : 'light');
   button.hidden = false;
 })();
