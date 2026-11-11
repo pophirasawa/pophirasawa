@@ -11,6 +11,11 @@
   --blog-border: #cdd8d5;
   --blog-nav: rgba(242, 245, 244, .96);
   --blog-banner: #f7f9f9;
+  --blog-control-bg: #247e78;
+  --blog-control-hover: #1c6964;
+  --blog-control-text: #f1f8f6;
+  --blog-active-bg: #247e78;
+  --blog-active-text: #f1f8f6;
   --blog-code-bg: #e8eeec;
   --blog-code-bar: #dde6e3;
   --blog-code-text: #344b50;
@@ -28,19 +33,24 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --blog-bg: #1c2023;
-  --blog-surface: #242a2e;
-  --blog-text: #cbd4d5;
-  --blog-heading: #e1e8e7;
-  --blog-muted: #9baaaa;
-  --blog-link: #65ccc2;
-  --blog-border: #3c484b;
-  --blog-nav: rgba(28, 32, 35, .96);
-  --blog-banner: #afbaba;
-  --blog-code-bg: #242b2f;
-  --blog-code-bar: #2d363a;
-  --blog-code-text: #d0dcdd;
-  --blog-code-comment: #9aafad;
+  --blog-bg: #202124;
+  --blog-surface: #292a2d;
+  --blog-text: #c4c7cc;
+  --blog-heading: #e3e5e8;
+  --blog-muted: #9b9fa7;
+  --blog-link: #83c9bf;
+  --blog-border: #3c4045;
+  --blog-nav: rgba(32, 33, 36, .97);
+  --blog-banner: #bcbcbc;
+  --blog-control-bg: #34363b;
+  --blog-control-hover: #41444a;
+  --blog-control-text: #d5d8dd;
+  --blog-active-bg: #2d4240;
+  --blog-active-text: #95d6cc;
+  --blog-code-bg: #27282c;
+  --blog-code-bar: #303136;
+  --blog-code-text: #c9ccd4;
+  --blog-code-comment: #9b9fa7;
   --blog-code-red: #ef9ca8;
   --blog-code-orange: #e9b18e;
   --blog-code-yellow: #d9c88e;
@@ -67,7 +77,7 @@ blockquote { color: var(--blog-text); background: var(--blog-surface); border-le
   background-color: var(--blog-banner);
   background-blend-mode: multiply;
 }
-#nav.no-bg, #top-container.no-bg, #top-container.plain, footer:not(.footer-bg) { background-color: #247e78; }
+#nav.no-bg, #top-container.no-bg, #top-container.plain, footer:not(.footer-bg) { background-color: var(--blog-control-bg); }
 #page-header.fixed, .search-dialog { background: var(--blog-nav); }
 #page-header.fixed a, #page-header.fixed .toggle-menu, #page-header.fixed #site-name {
   color: var(--blog-text);
@@ -105,11 +115,15 @@ blockquote { color: var(--blog-text); background: var(--blog-surface); border-le
 #sidebar .author-info__description { color: var(--blog-muted); }
 #sidebar .author-info .follow-button a, #sidebar .toggle-sidebar-info span,
 #sidebar .author-info-articles .article-meta, #sidebar .author-info-links__name,
-.recent-post-item .more, #pagination .page-number.current, #sidebar .sidebar-toc .toc-link.active {
-  background: #247e78;
-  color: #f1f8f6;
+.recent-post-item .more {
+  background: var(--blog-control-bg);
+  color: var(--blog-control-text);
 }
-.recent-post-item .more:hover, #sidebar .author-info .follow-button a:hover { background: #1c6964; }
+.recent-post-item .more:hover, #sidebar .author-info .follow-button a:hover { background: var(--blog-control-hover); }
+#pagination .page-number.current, #sidebar .sidebar-toc .toc-link.active {
+  background: var(--blog-active-bg);
+  color: var(--blog-active-text);
+}
 .recent-post-item .article-title, .article-sort-item__title, .category-list a {
   color: var(--blog-heading);
 }
@@ -118,7 +132,7 @@ blockquote { color: var(--blog-text); background: var(--blog-surface); border-le
 .recent-post-item .article-meta, .recent-post-item time, #post #post-meta,
 .article-sort-item__time, .category-list-count, .post-qr-code__desc { color: var(--blog-muted); }
 .post-meta__tags { background: var(--blog-surface); color: var(--blog-link); border-color: var(--blog-link); }
-.post-meta__tags:hover { background: #247e78; color: #f1f8f6; }
+.post-meta__tags:hover { background: var(--blog-control-bg); color: var(--blog-control-text); }
 .post-copyright-meta { color: var(--blog-link); }
 .post-copyright:hover, .content img:hover, #post img:hover, #sidebar img:hover { box-shadow: none; }
 .content img, #post img, #sidebar img { border-color: var(--blog-border); }
@@ -131,7 +145,7 @@ blockquote { color: var(--blog-text); background: var(--blog-surface); border-le
   border-color: var(--blog-link);
 }
 .article-sort-title::after { background: var(--blog-border); }
-#content-inner ol > li::before { background: #247e78; }
+#content-inner ol > li::before { background: var(--blog-control-bg); color: var(--blog-control-text); }
 
 /* Override every highlight surface, including nested table cells and toolbar. */
 .article-container code { background: var(--blog-surface); color: var(--blog-code-text); }
@@ -154,7 +168,23 @@ blockquote { color: var(--blog-text); background: var(--blog-surface); border-le
 .article-container pre .addition { background: var(--blog-addition); }
 .article-container pre .deletion { background: var(--blog-deletion); }
 .article-container .highlight .line::selection,
-.article-container pre *::selection { background: #247e78; color: #f1f8f6; }
+.article-container pre *::selection { background: var(--blog-active-bg); color: var(--blog-active-text); }
+
+/* In night mode, keep the photograph and small teal marks as the color focus. */
+[data-theme="dark"] #sidebar .author-info-links__name {
+  background: transparent;
+  color: var(--blog-text);
+}
+[data-theme="dark"] #sidebar .author-info-links__name:hover { color: var(--blog-link); }
+[data-theme="dark"] #sidebar .author-info-links__name::before { background: var(--blog-link); }
+[data-theme="dark"] #sidebar .author-info-articles .article-meta .pull-right { background: var(--blog-surface); }
+[data-theme="dark"] #sidebar .author-info-articles .article-meta .pull-right::before { border-right-color: var(--blog-surface); }
+[data-theme="dark"] #sidebar .author-info-articles .article-meta:hover { background: var(--blog-control-hover); }
+[data-theme="dark"] #sidebar .toggle-sidebar-info span:hover { background: var(--blog-control-hover); }
+[data-theme="dark"] #sidebar .sidebar-toc .toc-link.active { border-right-color: var(--blog-link); }
+[data-theme="dark"] #sidebar .sidebar-toc__progress { color: var(--blog-link); }
+[data-theme="dark"] hr::before { color: var(--blog-muted); }
+[data-theme="dark"] ::selection { background: var(--blog-active-bg); color: var(--blog-heading); }
 
 /* Valine injects its own stylesheet; use scoped selectors to retain the palette. */
 #vcomment .vwrap, #vcomment .vheader .vinput, #vcomment .vcard .vh,

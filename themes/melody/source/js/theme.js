@@ -16,7 +16,7 @@
       timer = setTimeout(function () { root.classList.remove('blog-theme-transition'); }, 240);
     }
     root.dataset.theme = theme;
-    document.getElementById('blog-theme-color').content = theme === 'dark' ? '#1c2023' : '#f2f5f4';
+    document.getElementById('blog-theme-color').content = theme === 'dark' ? '#202124' : '#f2f5f4';
     var label = theme === 'dark' ? '切换到日间主题' : '切换到夜间主题';
     button.setAttribute('aria-label', label);
     button.setAttribute('aria-pressed', String(theme === 'dark'));

@@ -7,6 +7,7 @@ const root = path.resolve(__dirname, '../public');
 function check() {
   const failures = [];
   const wikiPages = [];
+  const blogPages = [];
   let pages = 0;
   function visit(folder) {
     for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
@@ -18,6 +19,7 @@ function check() {
       if (file.endsWith('.html')) {
         pages++;
         if (label.startsWith('wiki/')) wikiPages.push({ label, text });
+        else blogPages.push({ label, text });
         // Ordinary outbound article/friend links are intentionally allowed.
         for (const match of text.matchAll(/<(script|link)\b[^>]*>/gi)) {
           const tag = match[0];
@@ -57,13 +59,19 @@ function check() {
     if (!fs.existsSync(path.join(root, file))) failures.push(`Missing ${file}`);
   }
   visit(root);
+  failures.push(...require('./check-blog.cjs')({
+    root,
+    pages: blogPages,
+    themeSource: path.resolve(__dirname, '../themes/melody/source'),
+    diagramSource: path.resolve(__dirname, 'diagrams.js')
+  }));
   failures.push(...require('./check-wiki.cjs')({
     root,
     pages: wikiPages,
     themeSource: path.resolve(__dirname, '../themes/wiki/source')
   }));
   if (failures.length) throw new Error(failures.join('\n'));
-  console.log(`Checked ${pages} HTML pages: local resources exist; Blog and Wiki outputs, Wiki asset versions and search index are valid.`);
+  console.log(`Checked ${pages} HTML pages: local resources exist; Blog and Wiki theme assets, cache versions, bootstrap order and Wiki search index are valid.`);
 }
 
 module.exports = check;
