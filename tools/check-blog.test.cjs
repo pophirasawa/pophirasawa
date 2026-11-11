@@ -29,8 +29,9 @@ function fixture(t) {
     write(path.join(root, name), data);
     const version = createHash('sha256').update(data).digest('hex').slice(0, 10);
     if (name.endsWith('.css')) tags.push('<link rel="stylesheet" href="/css/index.css?version=2.9.0">');
-    tags.push(name.endsWith('.css') ? `<link rel="stylesheet" href="/${name}?v=${version}">`
-      : `<script src="/${name}?v=${version}"${name === 'js/theme-init.js' ? '' : ' defer'}></script>`);
+    tags.push(name === 'js/theme-init.js' ? `<script data-blog-theme-init>${data}</script>`
+      : name.endsWith('.css') ? `<link rel="stylesheet" href="/${name}?v=${version}">`
+      : `<script src="/${name}?v=${version}" defer></script>`);
   }
   tags.push('<button class="blog-theme-toggle pull-right" type="button" aria-label="切换到夜间主题" aria-pressed="false"></button>');
   const pages = [{ label: 'index.html', text: tags.join('\n') }];
@@ -104,4 +105,21 @@ test('rejects an empty button label and invalid toggle state', t => {
   const f = fixture(t);
   f.pages[0].text = f.pages[0].text.replace('切换到夜间主题', '').replace('aria-pressed="false"', 'aria-pressed="maybe"');
   assert.match(f.run().join('\n'), /missing accessible Blog theme toggle/);
+});
+
+test('rejects external, stale and missing theme bootstraps', t => {
+  const f = fixture(t);
+  f.pages[0].text = f.pages[0].text.replace('data-blog-theme-init', 'data-blog-theme-init src="/js/theme-init.js"')
+    .replace('(function () {})();', '(function () { /* stale */ })();');
+  const failures = f.run().join('\n');
+  assert.match(failures, /bootstrap must be inline/);
+  assert.match(failures, /outdated inline Blog theme bootstrap/);
+  f.pages[0].text = f.pages[0].text.replace(/<script data-blog-theme-init[^<]+<\/script>/, '');
+  assert.match(f.run().join('\n'), /missing inline Blog theme bootstrap/);
+});
+
+test('rejects parser-blocking dependencies that would stall the page', t => {
+  const f = fixture(t);
+  f.pages[0].text += '<script src="/vendor/jquery/jquery.min.js"></script>';
+  assert.match(f.run().join('\n'), /parser-blocking Blog script \/vendor\/jquery\/jquery.min.js/);
 });

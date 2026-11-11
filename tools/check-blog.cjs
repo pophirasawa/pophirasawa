@@ -16,8 +16,9 @@ function attributes(tag) {
 module.exports = function checkBlog({ root, pages, themeSource, diagramSource }) {
   const failures = [];
   const versions = new Map();
-  const required = ['js/theme-init.js', 'css/theme.css', 'js/theme.js'];
-  for (const name of [...required, 'vendor/diagrams.js']) {
+  const required = ['css/theme.css', 'js/theme.js'];
+  const bootstrapSource = path.join(themeSource, 'js/theme-init.js');
+  for (const name of ['js/theme-init.js', ...required, 'vendor/diagrams.js']) {
     const file = path.join(root, name);
     const source = name === 'vendor/diagrams.js' ? diagramSource : path.join(themeSource, name);
     if (!fs.existsSync(file)) { failures.push(`Blog: missing theme asset ${name}`); continue; }
@@ -36,7 +37,14 @@ module.exports = function checkBlog({ root, pages, themeSource, diagramSource })
       type: match[1].toLowerCase(), index: match.index, attrs: attributes(match[0])
     }));
     const references = new Map();
+    for (const tag of tags) {
+      if (tag.type === 'script' && tag.attrs.has('src') && !tag.attrs.has('defer')
+        && !tag.attrs.has('async') && tag.attrs.get('type') !== 'module') {
+        failures.push(`${label}: parser-blocking Blog script ${tag.attrs.get('src')}; use defer to keep content readable`);
+      }
+    }
     for (const name of versions.keys()) {
+      if (name === 'js/theme-init.js') continue;
       const matches = tags.filter(tag => {
         const url = tag.attrs.get('src') || tag.attrs.get('href');
         return url?.split(/[?#]/)[0] === '/' + name;
@@ -60,8 +68,16 @@ module.exports = function checkBlog({ root, pages, themeSource, diagramSource })
         failures.push(`${label}: Blog theme script must use a script tag: ${name}`);
       }
     }
-    const bootstrap = references.get('js/theme-init.js');
+    const bootstraps = tags.filter(tag => tag.type === 'script' && tag.attrs.has('data-blog-theme-init'));
+    const bootstrap = bootstraps[0];
+    if (!bootstrap) failures.push(`${label}: missing inline Blog theme bootstrap`);
+    if (bootstraps.length > 1) failures.push(`${label}: duplicate Blog theme bootstrap`);
     if (bootstrap) {
+      if (bootstrap.attrs.has('src')) failures.push(`${label}: Blog theme bootstrap must be inline to avoid a blocking request`);
+      const code = text.slice(text.indexOf('>', bootstrap.index) + 1, text.indexOf('</script>', bootstrap.index)).trim();
+      if (!fs.existsSync(bootstrapSource) || code !== fs.readFileSync(bootstrapSource, 'utf8').replace(/<\/script/gi, '<\\/script').trim()) {
+        failures.push(`${label}: outdated inline Blog theme bootstrap; rebuild before publishing`);
+      }
       if (bootstrap.attrs.has('async') || bootstrap.attrs.has('defer') || bootstrap.attrs.get('type') === 'module') {
         failures.push(`${label}: Blog theme bootstrap must run synchronously before CSS`);
       }

@@ -6,5 +6,5 @@
   var theme = saved === 'light' || saved === 'dark' ? saved
     : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   document.documentElement.dataset.theme = theme;
-  document.getElementById('blog-theme-color').content = theme === 'dark' ? '#202124' : '#f2f5f4';
+  document.getElementById('blog-theme-color').content = theme === 'dark' ? '#202124' : '#ffffff';
 })();

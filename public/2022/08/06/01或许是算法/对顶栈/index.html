@@ -1,4 +1,14 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="对顶栈"><meta name="keywords" content="数据结构"><meta name="author" content="PopHirasawa"><meta name="copyright" content="PopHirasawa"><title>对顶栈 | PopHirasawa's Blog</title><link rel="shortcut icon" href="/favicon.ico"><meta id="blog-theme-color" name="theme-color" content="#f2f5f4"><script src="/js/theme-init.js?v=83d8b82779"></script><link rel="stylesheet" href="/css/index.css?version=2.9.0"><link rel="stylesheet" href="/vendor/fontawesome/css/v4-shims.min.css?version=2.9.0"><link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css?version=2.9.0"><link rel="stylesheet" href="/css/theme.css?v=279e12f1c4"><script src="/js/theme.js?v=1c69a3e834" defer></script><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = {
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="对顶栈"><meta name="keywords" content="数据结构"><meta name="author" content="PopHirasawa"><meta name="copyright" content="PopHirasawa"><title>对顶栈 | PopHirasawa's Blog</title><link rel="shortcut icon" href="/favicon.ico"><meta id="blog-theme-color" name="theme-color" content="#ffffff"><script data-blog-theme-init>/* Synchronous: choose the palette before any stylesheet can paint the page. */
+(function () {
+  'use strict';
+  var saved;
+  try { saved = localStorage.getItem('pophirasawa.blog.theme'); } catch (_) {}
+  var theme = saved === 'light' || saved === 'dark' ? saved
+    : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  document.documentElement.dataset.theme = theme;
+  document.getElementById('blog-theme-color').content = theme === 'dark' ? '#202124' : '#ffffff';
+})();
+</script><link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.min.css"><link rel="stylesheet" href="/css/index.css?v=4736180023"><link rel="stylesheet" href="/vendor/fontawesome/css/v4-shims.min.css?version=2.9.0"><link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css?version=2.9.0"><link rel="stylesheet" href="/css/theme.css?v=caa7e0f377"><script src="/js/theme.js?v=e26e5a9723" defer></script><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -15,29 +25,31 @@
 </blockquote>
 <p>顾名思义，对顶栈就是两个栈，一个维护光标左边的内容，一个维护光标右边的内容，光标的移动就是把一边的弹出来塞到另外一边就行，添加和删除操作也很简单了，就是对栈进行相应操作就行。</p>
 <p><a target="_blank" rel="noopener" href="https://acm.hdu.edu.cn/showproblem.php?pid=4699">Problem - 4699 (hdu.edu.cn)</a></p>
-</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2023/03/22/04%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%AD%A6%E4%B9%A0/"><i class="fa fa-chevron-left"></i><span>价值学习</span></a></div><div class="next-post pull-right"><a href="/2022/06/16/04%E5%AD%A6%E4%B9%A0/cpp(1)/"><span>c++ primer 读书笔记(1)</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="/vendor/leancloud/av-min.js"></script><script src="/vendor/valine/Valine.min.js"></script><script>var notify = 'true' == 'true';
-var verify = 'true' == 'true';
-var record_ip = 'false' == 'true';
-var GUEST_INFO = ['nick','mail','link'];
-var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-  return GUEST_INFO.indexOf(item) > -1
-});
-guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
-window.valine = new Valine({
-  el:'#vcomment',
-  notify:notify,
-  verify:verify,
-  recordIP:record_ip,
-  appId:'TLG7D021bQkJY7pS0cUfAT7O-gzGzoHsz',
-  appKey:'Q0dQbnm4Gv8bxSBCpfGwtcvG',
-  placeholder:'细说',
-  avatar:'mm',
-  guest_info:guest_info,
-  pageSize:'7',
-  lang: 'zh-cn',
-  serverURLs: 'https://shared.lc-cn-n1-shared.com'
-})</script></div></div><footer class="footer-bg" style="background-image: url(/yui.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2026 By PopHirasawa</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">无聊的时候，为什么不看看轻音少女呢？</div><script src="/vendor/diagrams.js?v=f630113bc2" defer></script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/vendor/anime/anime.min.js"></script><script src="/vendor/jquery/jquery.min.js"></script><script src="/vendor/fancybox/jquery.fancybox.min.js"></script><script src="/vendor/velocity/velocity.min.js"></script><script src="/vendor/velocity/velocity.ui.min.js"></script><script src="/js/utils.js?version=2.9.0"></script><script src="/js/fancybox.js?version=2.9.0"></script><script src="/js/sidebar.js?version=2.9.0"></script><script src="/js/copy.js?version=2.9.0"></script><script src="/js/fireworks.js?version=2.9.0"></script><script src="/js/transition.js?version=2.9.0"></script><script src="/js/scroll.js?version=2.9.0"></script><script src="/js/head.js?version=2.9.0"></script><link rel="stylesheet" type="text/css" href="/vendor/katex/katex.min.css"><script src="/vendor/katex/copy-tex.min.js" defer></script><script src="/js/katex.js" defer></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2023/03/22/04%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%AD%A6%E4%B9%A0/"><i class="fa fa-chevron-left"></i><span>价值学习</span></a></div><div class="next-post pull-right"><a href="/2022/06/16/04%E5%AD%A6%E4%B9%A0/cpp(1)/"><span>c++ primer 读书笔记(1)</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="/vendor/leancloud/av-min.js" defer></script><script src="/vendor/valine/Valine.min.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+  var notify = 'true' == 'true';
+  var verify = 'true' == 'true';
+  var record_ip = 'false' == 'true';
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+  window.valine = new Valine({
+    el:'#vcomment',
+    notify:notify,
+    verify:verify,
+    recordIP:record_ip,
+    appId:'TLG7D021bQkJY7pS0cUfAT7O-gzGzoHsz',
+    appKey:'Q0dQbnm4Gv8bxSBCpfGwtcvG',
+    placeholder:'细说',
+    avatar:'mm',
+    guest_info:guest_info,
+    pageSize:'7',
+    lang: 'zh-cn',
+    serverURLs: 'https://shared.lc-cn-n1-shared.com'
+  })
+});</script></div></div><footer class="footer-bg" style="background-image: url(/yui.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2026 By PopHirasawa</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">无聊的时候，为什么不看看轻音少女呢？</div><script src="/vendor/diagrams.js?v=f630113bc2" defer></script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/vendor/anime/anime.min.js" defer></script><script src="/vendor/jquery/jquery.min.js" defer></script><script src="/vendor/fancybox/jquery.fancybox.min.js" defer></script><script src="/vendor/velocity/velocity.min.js" defer></script><script src="/vendor/velocity/velocity.ui.min.js" defer></script><script src="/js/utils.js?v=be74d172d3" defer></script><script src="/js/fancybox.js?v=b8930b2ab2" defer></script><script src="/js/sidebar.js?v=a7f8305239" defer></script><script src="/js/copy.js?v=87ce10748a" defer></script><script src="/js/fireworks.js?v=8036278f84" defer></script><script src="/js/transition.js?v=43199de419" defer></script><script src="/js/scroll.js?v=d8209ed683" defer></script><script src="/js/head.js?v=68ae886f4c" defer></script><link rel="stylesheet" type="text/css" href="/vendor/katex/katex.min.css"><script src="/vendor/katex/copy-tex.min.js" defer></script><script src="/js/katex.js" defer></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  document.querySelectorAll('#nav, footer, #top-container').forEach(function (node) {
+    node.classList.add('is-mobile')
+  })
 }</script></body></html>

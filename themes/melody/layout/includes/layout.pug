@@ -26,11 +26,12 @@ html(lang=Array.isArray(config.language) ? config.language[0] : config.language)
     meta(name="copyright" content=pageCopyright)
     title= pageTitle
     !=favicon_tag(config.favicon || theme.favicon || '/melody-favicon.ico')
-    meta#blog-theme-color(name="theme-color" content="#f2f5f4")
-    script(src=blog_asset('js/theme-init.js'))
+    meta#blog-theme-color(name="theme-color" content="#ffffff")
+    script(data-blog-theme-init)!= blog_theme_bootstrap()
+    link(rel='stylesheet', href=url_for('/vendor/fancybox/jquery.fancybox.min.css'))
     if theme.stylesheets !== undefined && theme.stylesheets.length > 0
       each url in theme.stylesheets
-        link(rel='stylesheet', href=url_for(url) + '?version=' + version())
+        link(rel='stylesheet', href=url === '/css/index.css' ? blog_asset('css/index.css') : url_for(url) + '?version=' + version())
     each item in theme.cdn.css
       if item !== undefined
         link(rel='stylesheet', href=item + '?version=' + version())
@@ -60,10 +61,10 @@ html(lang=Array.isArray(config.language) ? config.language[0] : config.language)
     i.fa.fa-arrow-up#go-up(aria-hidden="true")
     each item in theme.cdn.js
       if item !== undefined
-        script(src=url_for(item))
+        script(src=url_for(item) defer)
     if theme.scripts !== undefined && theme.scripts.length > 0
       //- scripts list from config.yml
       each url in theme.scripts
-        script(src=url_for(url) + '?version=' + version())
+        script(src=url.startsWith('/js/') ? blog_asset(url.slice(1)) : url_for(url) + '?version=' + version() defer)
     include ./additional-js.pug
     include ./search/index.pug

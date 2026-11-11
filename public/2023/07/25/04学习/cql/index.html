@@ -1,4 +1,14 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="CQL-保守Q学习"><meta name="keywords" content="RL"><meta name="author" content="PopHirasawa"><meta name="copyright" content="PopHirasawa"><title>CQL-保守Q学习 | PopHirasawa's Blog</title><link rel="shortcut icon" href="/favicon.ico"><meta id="blog-theme-color" name="theme-color" content="#f2f5f4"><script src="/js/theme-init.js?v=83d8b82779"></script><link rel="stylesheet" href="/css/index.css?version=2.9.0"><link rel="stylesheet" href="/vendor/fontawesome/css/v4-shims.min.css?version=2.9.0"><link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css?version=2.9.0"><link rel="stylesheet" href="/css/theme.css?v=279e12f1c4"><script src="/js/theme.js?v=1c69a3e834" defer></script><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = {
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="CQL-保守Q学习"><meta name="keywords" content="RL"><meta name="author" content="PopHirasawa"><meta name="copyright" content="PopHirasawa"><title>CQL-保守Q学习 | PopHirasawa's Blog</title><link rel="shortcut icon" href="/favicon.ico"><meta id="blog-theme-color" name="theme-color" content="#ffffff"><script data-blog-theme-init>/* Synchronous: choose the palette before any stylesheet can paint the page. */
+(function () {
+  'use strict';
+  var saved;
+  try { saved = localStorage.getItem('pophirasawa.blog.theme'); } catch (_) {}
+  var theme = saved === 'light' || saved === 'dark' ? saved
+    : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  document.documentElement.dataset.theme = theme;
+  document.getElementById('blog-theme-color').content = theme === 'dark' ? '#202124' : '#ffffff';
+})();
+</script><link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.min.css"><link rel="stylesheet" href="/css/index.css?v=4736180023"><link rel="stylesheet" href="/vendor/fontawesome/css/v4-shims.min.css?version=2.9.0"><link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css?version=2.9.0"><link rel="stylesheet" href="/css/theme.css?v=caa7e0f377"><script src="/js/theme.js?v=e26e5a9723" defer></script><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -80,29 +90,31 @@
 <p>考虑使用KL散度作为正则项，计先验分布<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo stretchy="false">(</mo><mrow><mi mathvariant="bold">a</mi><mi mathvariant="bold">∣</mi><mi mathvariant="bold">s</mi></mrow><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\rho(\mathbf{a|s})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ρ</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">a∣s</span></span><span class="mclose">)</span></span></span></span>，则有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">R</mi><mo stretchy="false">(</mo><mi>μ</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><msub><mi>D</mi><mrow><mi>K</mi><mi>L</mi></mrow></msub><mo stretchy="false">(</mo><mi>μ</mi><mo separator="true">,</mo><mi>ρ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal R(\mu)=-D_{KL}(\mu,\rho)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal">R</span><span class="mopen">(</span><span class="mord mathnormal">μ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0715em;">K</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">μ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">ρ</span><span class="mclose">)</span></span></span></span></p>
 <p>两个想法是把这个先验分布设置成均匀分布或者<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover accent="true"><mi>π</mi><mo>^</mo></mover><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\hat\pi^{k-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8491em;"></span><span class="mord"><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>的分布</p>
 <p><strong>[正则化]</strong> 由于先要找到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span></span></span></span>令式子最大，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">R</mi><mo stretchy="false">(</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{R}(\mu)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal">R</span><span class="mopen">(</span><span class="mord mathnormal">μ</span><span class="mclose">)</span></span></span></span>能减少分布的方差，防止过拟合</p>
-</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/RL/">RL</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2023/10/29/04%E5%AD%A6%E4%B9%A0/Gumbel%20Softmax/"><i class="fa fa-chevron-left"></i><span>重参数化与Gumbel-Softmax</span></a></div><div class="next-post pull-right"><a href="/2023/03/22/04%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%AD%A6%E4%B9%A0/"><span>价值学习</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="/vendor/leancloud/av-min.js"></script><script src="/vendor/valine/Valine.min.js"></script><script>var notify = 'true' == 'true';
-var verify = 'true' == 'true';
-var record_ip = 'false' == 'true';
-var GUEST_INFO = ['nick','mail','link'];
-var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-  return GUEST_INFO.indexOf(item) > -1
-});
-guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
-window.valine = new Valine({
-  el:'#vcomment',
-  notify:notify,
-  verify:verify,
-  recordIP:record_ip,
-  appId:'TLG7D021bQkJY7pS0cUfAT7O-gzGzoHsz',
-  appKey:'Q0dQbnm4Gv8bxSBCpfGwtcvG',
-  placeholder:'细说',
-  avatar:'mm',
-  guest_info:guest_info,
-  pageSize:'7',
-  lang: 'zh-cn',
-  serverURLs: 'https://shared.lc-cn-n1-shared.com'
-})</script></div></div><footer class="footer-bg" style="background-image: url(/yui.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2026 By PopHirasawa</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">无聊的时候，为什么不看看轻音少女呢？</div><script src="/vendor/diagrams.js?v=f630113bc2" defer></script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/vendor/anime/anime.min.js"></script><script src="/vendor/jquery/jquery.min.js"></script><script src="/vendor/fancybox/jquery.fancybox.min.js"></script><script src="/vendor/velocity/velocity.min.js"></script><script src="/vendor/velocity/velocity.ui.min.js"></script><script src="/js/utils.js?version=2.9.0"></script><script src="/js/fancybox.js?version=2.9.0"></script><script src="/js/sidebar.js?version=2.9.0"></script><script src="/js/copy.js?version=2.9.0"></script><script src="/js/fireworks.js?version=2.9.0"></script><script src="/js/transition.js?version=2.9.0"></script><script src="/js/scroll.js?version=2.9.0"></script><script src="/js/head.js?version=2.9.0"></script><link rel="stylesheet" type="text/css" href="/vendor/katex/katex.min.css"><script src="/vendor/katex/copy-tex.min.js" defer></script><script src="/js/katex.js" defer></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
-  $('#nav').addClass('is-mobile')
-  $('footer').addClass('is-mobile')
-  $('#top-container').addClass('is-mobile')
+</div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/RL/">RL</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2023/10/29/04%E5%AD%A6%E4%B9%A0/Gumbel%20Softmax/"><i class="fa fa-chevron-left"></i><span>重参数化与Gumbel-Softmax</span></a></div><div class="next-post pull-right"><a href="/2023/03/22/04%E5%AD%A6%E4%B9%A0/%E4%BB%B7%E5%80%BC%E5%AD%A6%E4%B9%A0/"><span>价值学习</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="vcomment"></div><script src="/vendor/leancloud/av-min.js" defer></script><script src="/vendor/valine/Valine.min.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+  var notify = 'true' == 'true';
+  var verify = 'true' == 'true';
+  var record_ip = 'false' == 'true';
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+  window.valine = new Valine({
+    el:'#vcomment',
+    notify:notify,
+    verify:verify,
+    recordIP:record_ip,
+    appId:'TLG7D021bQkJY7pS0cUfAT7O-gzGzoHsz',
+    appKey:'Q0dQbnm4Gv8bxSBCpfGwtcvG',
+    placeholder:'细说',
+    avatar:'mm',
+    guest_info:guest_info,
+    pageSize:'7',
+    lang: 'zh-cn',
+    serverURLs: 'https://shared.lc-cn-n1-shared.com'
+  })
+});</script></div></div><footer class="footer-bg" style="background-image: url(/yui.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2026 By PopHirasawa</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">无聊的时候，为什么不看看轻音少女呢？</div><script src="/vendor/diagrams.js?v=f630113bc2" defer></script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/vendor/anime/anime.min.js" defer></script><script src="/vendor/jquery/jquery.min.js" defer></script><script src="/vendor/fancybox/jquery.fancybox.min.js" defer></script><script src="/vendor/velocity/velocity.min.js" defer></script><script src="/vendor/velocity/velocity.ui.min.js" defer></script><script src="/js/utils.js?v=be74d172d3" defer></script><script src="/js/fancybox.js?v=b8930b2ab2" defer></script><script src="/js/sidebar.js?v=a7f8305239" defer></script><script src="/js/copy.js?v=87ce10748a" defer></script><script src="/js/fireworks.js?v=8036278f84" defer></script><script src="/js/transition.js?v=43199de419" defer></script><script src="/js/scroll.js?v=d8209ed683" defer></script><script src="/js/head.js?v=68ae886f4c" defer></script><link rel="stylesheet" type="text/css" href="/vendor/katex/katex.min.css"><script src="/vendor/katex/copy-tex.min.js" defer></script><script src="/js/katex.js" defer></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  document.querySelectorAll('#nav, footer, #top-container').forEach(function (node) {
+    node.classList.add('is-mobile')
+  })
 }</script></body></html>
