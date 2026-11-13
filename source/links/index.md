@@ -28,3 +28,4 @@ date: 2021-11-04 13:52:29
 **anda:** [anda](https://junpickle.github.io)
 **泽村睿:**[泽村睿](https://scientificw.github.io/)
 **MareDevi：**[MareDevi](https://maredevi.fun/)
+**namedlxd：**[namedlxd's Blog](https://blog.namedlxd.top/)
